@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Avvik.gd" type="Script" id=2]
@@ -9,7 +9,9 @@
 [ext_resource path="res://Derivat.gd" type="Script" id=7]
 [ext_resource path="res://Pådrag.gd" type="Script" id=8]
 [ext_resource path="res://PIDsim.gd" type="Script" id=9]
-[ext_resource path="res://Node2D.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Trend.gd" type="Script" id=10]
+[ext_resource path="res://Ventil.gd" type="Script" id=11]
+[ext_resource path="res://Node2D.gd" type="Script" id=12]
 
 [sub_resource type="DynamicFont" id=2]
 size = 36
@@ -44,10 +46,10 @@ script = ExtResource( 9 )
 [node name="ProsessVerdi" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 264.0
-margin_top = 240.0
-margin_right = 376.0
-margin_bottom = 288.0
+margin_left = 176.0
+margin_top = 232.0
+margin_right = 288.0
+margin_bottom = 280.0
 custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 text = "65"
@@ -71,10 +73,10 @@ text = "Prosess verdi"
 [node name="Avvik" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 440.0
-margin_top = 240.0
-margin_right = 552.0
-margin_bottom = 288.0
+margin_left = 352.0
+margin_top = 232.0
+margin_right = 464.0
+margin_bottom = 280.0
 custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 text = "65"
@@ -137,10 +139,10 @@ text = "-"
 [node name="Setpunkt" type="LineEdit" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 440.0
-margin_top = 352.0
-margin_right = 552.0
-margin_bottom = 400.0
+margin_left = 352.0
+margin_top = 344.0
+margin_right = 464.0
+margin_bottom = 392.0
 custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
 custom_fonts/font = SubResource( 7 )
 custom_styles/normal = SubResource( 3 )
@@ -167,10 +169,10 @@ valign = 1
 [node name="Proporsjonal" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 688.0
-margin_top = 152.0
-margin_right = 816.0
-margin_bottom = 200.0
+margin_left = 600.0
+margin_top = 144.0
+margin_right = 728.0
+margin_bottom = 192.0
 custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 text = "65"
@@ -207,10 +209,10 @@ valign = 1
 [node name="Integral" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 688.0
-margin_top = 240.0
-margin_right = 816.0
-margin_bottom = 288.0
+margin_left = 600.0
+margin_top = 232.0
+margin_right = 728.0
+margin_bottom = 280.0
 custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 text = "65"
@@ -238,10 +240,10 @@ valign = 1
 [node name="Derivat" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 688.0
-margin_top = 328.0
-margin_right = 816.0
-margin_bottom = 376.0
+margin_left = 600.0
+margin_top = 320.0
+margin_right = 728.0
+margin_bottom = 368.0
 custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 text = "65"
@@ -277,10 +279,10 @@ valign = 1
 [node name="Pådrag" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 944.0
-margin_top = 240.0
-margin_right = 1072.0
-margin_bottom = 288.0
+margin_left = 856.0
+margin_top = 232.0
+margin_right = 984.0
+margin_bottom = 280.0
 custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 text = "65"
@@ -312,13 +314,43 @@ text = "Utgangsverdi
 align = 1
 valign = 1
 
+[node name="Ventil" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1048.0
+margin_top = 232.0
+margin_right = 1176.0
+margin_bottom = 280.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "65"
+valign = 1
+script = ExtResource( 11 )
+
+[node name="Pil" type="Line2D" parent="Ventil"]
+position = Vector2( 64, 0 )
+points = PoolVector2Array( 65, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+joint_mode = 2
+
+[node name="Label" type="Label" parent="Ventil"]
+margin_left = 8.0
+margin_top = -40.0
+margin_right = 128.0
+margin_bottom = 7.0
+custom_fonts/font = SubResource( 4 )
+text = "Ventilpossisjon"
+align = 1
+valign = 1
+
 [node name="Kp" type="LineEdit" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 536.0
-margin_top = 16.0
-margin_right = 648.0
-margin_bottom = 64.0
+margin_left = 448.0
+margin_top = 8.0
+margin_right = 560.0
+margin_bottom = 56.0
 custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
 custom_fonts/font = SubResource( 7 )
 custom_styles/normal = SubResource( 3 )
@@ -338,10 +370,10 @@ valign = 1
 [node name="Ti" type="LineEdit" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 696.0
-margin_top = 16.0
-margin_right = 808.0
-margin_bottom = 64.0
+margin_left = 608.0
+margin_top = 8.0
+margin_right = 720.0
+margin_bottom = 56.0
 custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
 custom_fonts/font = SubResource( 7 )
 custom_styles/normal = SubResource( 3 )
@@ -361,10 +393,10 @@ valign = 1
 [node name="Td" type="LineEdit" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 856.0
-margin_top = 16.0
-margin_right = 968.0
-margin_bottom = 64.0
+margin_left = 768.0
+margin_top = 8.0
+margin_right = 880.0
+margin_bottom = 56.0
 custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
 custom_fonts/font = SubResource( 7 )
 custom_styles/normal = SubResource( 3 )
@@ -385,9 +417,9 @@ valign = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
-margin_top = 240.0
+margin_top = 152.0
 margin_right = 128.0
-margin_bottom = 288.0
+margin_bottom = 200.0
 custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
 custom_fonts/font = SubResource( 7 )
 custom_styles/normal = SubResource( 3 )
@@ -408,9 +440,9 @@ valign = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
-margin_top = 128.0
+margin_top = 64.0
 margin_right = 128.0
-margin_bottom = 176.0
+margin_bottom = 112.0
 custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
 custom_fonts/font = SubResource( 7 )
 custom_styles/normal = SubResource( 3 )
@@ -445,7 +477,30 @@ margin_top = 48.0
 margin_right = 128.0
 margin_bottom = 70.0
 custom_fonts/font = SubResource( 4 )
-text = "Ventil Cv"
+text = "Ventil Cv m3/t"
+align = 1
+valign = 1
+
+[node name="VentilHastighet" type="LineEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1152.0
+margin_top = 424.0
+margin_right = 1264.0
+margin_bottom = 472.0
+custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/normal = SubResource( 3 )
+text = "5.0"
+align = 1
+
+[node name="Label" type="Label" parent="VentilHastighet"]
+margin_left = -40.0
+margin_top = 48.0
+margin_right = 117.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 4 )
+text = "Ventil hastighet %/s"
 align = 1
 valign = 1
 
@@ -453,9 +508,9 @@ valign = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
-margin_top = 352.0
+margin_top = 248.0
 margin_right = 128.0
-margin_bottom = 400.0
+margin_bottom = 296.0
 custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
 custom_fonts/font = SubResource( 7 )
 custom_styles/normal = SubResource( 3 )
@@ -476,9 +531,9 @@ valign = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
-margin_top = 432.0
+margin_top = 336.0
 margin_right = 128.0
-margin_bottom = 480.0
+margin_bottom = 384.0
 custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
 custom_fonts/font = SubResource( 7 )
 custom_styles/normal = SubResource( 3 )
@@ -496,9 +551,79 @@ align = 1
 valign = 1
 
 [node name="Trend" type="Node2D" parent="."]
+position = Vector2( -192, 128 )
+script = ExtResource( 12 )
 
-[node name="Node2D" parent="Trend" instance=ExtResource( 10 )]
-position = Vector2( 192, 104 )
+[node name="Timer" type="Timer" parent="Trend"]
+wait_time = 0.1
+autostart = true
+
+[node name="Trend" type="ColorRect" parent="Trend"]
+margin_left = 208.0
+margin_top = 336.0
+margin_right = 960.0
+margin_bottom = 560.0
+color = Color( 0.0470588, 0.0470588, 0.0470588, 1 )
+script = ExtResource( 10 )
+
+[node name="Level" type="Line2D" parent="Trend/Trend"]
+position = Vector2( 0, 224 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Setpunkt" type="Line2D" parent="Trend/Trend"]
+position = Vector2( 0, 224 )
+width = 2.0
+default_color = Color( 0.4, 0.501961, 1, 1 )
+
+[node name="Utgang" type="Line2D" parent="Trend/Trend"]
+position = Vector2( 0, 224 )
+width = 2.0
+default_color = Color( 0.0745098, 0.560784, 0.0313726, 1 )
+
+[node name="Ventil" type="Line2D" parent="Trend/Trend"]
+position = Vector2( 0, 224 )
+width = 1.0
+default_color = Color( 0.662745, 0.215686, 0.215686, 1 )
+
+[node name="Nivå" type="Label" parent="Trend"]
+margin_left = 208.0
+margin_top = 336.0
+margin_right = 352.0
+margin_bottom = 358.0
+custom_fonts/font = SubResource( 4 )
+text = "Nivå"
+valign = 1
+
+[node name="Setpunkt" type="Label" parent="Trend"]
+self_modulate = Color( 0.4, 0.501961, 1, 1 )
+margin_left = 256.0
+margin_top = 336.0
+margin_right = 400.0
+margin_bottom = 358.0
+custom_fonts/font = SubResource( 4 )
+text = "Setpunkt"
+valign = 1
+
+[node name="Pådrag" type="Label" parent="Trend"]
+self_modulate = Color( 0.0745098, 0.560784, 0.0313726, 1 )
+margin_left = 336.0
+margin_top = 336.0
+margin_right = 480.0
+margin_bottom = 358.0
+custom_fonts/font = SubResource( 4 )
+text = "Pådrag"
+valign = 1
+
+[node name="Ventil" type="Label" parent="Trend"]
+self_modulate = Color( 0.662745, 0.215686, 0.215686, 1 )
+margin_left = 400.0
+margin_top = 336.0
+margin_right = 544.0
+margin_bottom = 358.0
+custom_fonts/font = SubResource( 4 )
+text = "Ventilpossisjon"
+valign = 1
 
 [connection signal="text_entered" from="Setpunkt" to="Setpunkt" method="_on_Setpunkt_text_entered"]
 [connection signal="text_entered" from="Kp" to="Proporsjonal" method="_on_Kp_text_entered"]
@@ -508,6 +633,8 @@ position = Vector2( 192, 104 )
 [connection signal="text_entered" from="Td" to="Derivat" method="_on_Td_text_entered"]
 [connection signal="text_entered" from="InnFlow" to="." method="_on_InnFlow_text_entered"]
 [connection signal="text_entered" from="TankSize" to="." method="_on_TankSize_text_entered"]
-[connection signal="text_entered" from="VentilSize" to="Pådrag" method="_on_VentilSize_text_entered"]
+[connection signal="text_entered" from="VentilSize" to="Ventil" method="_on_VentilSize_text_entered"]
+[connection signal="text_entered" from="VentilHastighet" to="Ventil" method="_on_VentilHastighet_text_entered"]
 [connection signal="text_entered" from="Målestøy" to="." method="_on_Mlesty_text_entered"]
 [connection signal="text_entered" from="MålestøyHZ" to="." method="_on_MlestyHZ_text_entered"]
+[connection signal="timeout" from="Trend/Timer" to="Trend" method="_on_Timer_timeout"]

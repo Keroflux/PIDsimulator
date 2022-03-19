@@ -13,7 +13,7 @@ autostart = true
 [node name="Trend" type="ColorRect" parent="."]
 margin_left = 208.0
 margin_top = 336.0
-margin_right = 648.0
+margin_right = 960.0
 margin_bottom = 560.0
 color = Color( 0.0470588, 0.0470588, 0.0470588, 1 )
 script = ExtResource( 3 )

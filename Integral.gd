@@ -17,6 +17,7 @@ func _physics_process(delta: float) -> void:
 		if ventil.utgang < 99.9 and ventil.utgang > 0.1:
 			utgangsverdi = (utgangsverdi + (avvik * delta * (Kp/Ti)))
 			utgangsverdi = clamp(utgangsverdi, 0, 100)
+	
 	text = str(stepify(utgangsverdi, 0.01))
 
 

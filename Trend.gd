@@ -3,6 +3,7 @@ extends ColorRect
 var level = []
 var sp = []
 var utgang = []
+var ventil = []
 var distance
 var newDistx = 0
 var scaleY = 0
@@ -46,6 +47,8 @@ func draw_trend():
 	$Level.clear_points()
 	$Setpunkt.clear_points()
 	$Utgang.clear_points()
+	$Ventil.clear_points()
+	
 	for i in level:
 		$Level.add_point(Vector2(newDistx, (-i + minValue) * scaleY))
 		newDistx += distance
@@ -57,16 +60,24 @@ func draw_trend():
 	for i in utgang:
 		$Utgang.add_point(Vector2(newDistx, (-i + minValue) * scaleY))
 		newDistx += distance
+	newDistx = 0
+	for i in ventil:
+		$Ventil.add_point(Vector2(newDistx, (-i + minValue) * scaleY))
+		newDistx += distance
 
 
 func redraw_trend(data_point):
-	if level.size() > 500:
+	if level.size() > 1500:
 		level.pop_front()
 		sp.pop_front()
 		utgang.pop_front()
+		ventil.pop_front()
+	
 	level.append(data_point[0])
 	sp.append(data_point[1])
 	utgang.append(data_point[2])
+	ventil.append(data_point[3])
+	
 	if level.size() > 1:
 		calculate_point_distance()
 #		find_max()

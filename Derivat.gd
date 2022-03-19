@@ -9,8 +9,9 @@ var forrige_avvik: float = 0.0
 
 func _physics_process(delta: float) -> void:
 	utgangsverdi = ((avvik - forrige_avvik) / delta) * Td * Kp
-	text = str(stepify(utgangsverdi, 0.01))
 	forrige_avvik = avvik
+	
+	text = str(stepify(utgangsverdi, 0.01))
 
 
 func _on_Td_text_entered(new_text):
