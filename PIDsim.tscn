@@ -1,0 +1,512 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Roboto-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Avvik.gd" type="Script" id=2]
+[ext_resource path="res://ProsessVerdi.gd" type="Script" id=3]
+[ext_resource path="res://Setpunkt.gd" type="Script" id=4]
+[ext_resource path="res://Proporsjonal.gd" type="Script" id=5]
+[ext_resource path="res://Integral.gd" type="Script" id=6]
+[ext_resource path="res://Derivat.gd" type="Script" id=7]
+[ext_resource path="res://Pådrag.gd" type="Script" id=8]
+[ext_resource path="res://PIDsim.gd" type="Script" id=9]
+[ext_resource path="res://Node2D.tscn" type="PackedScene" id=10]
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="DynamicFont" id=4]
+size = 18
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 38
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 36
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+font_data = ExtResource( 1 )
+
+[node name="PIDsim" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="ProsessVerdi" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 264.0
+margin_top = 240.0
+margin_right = 376.0
+margin_bottom = 288.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "65"
+valign = 1
+script = ExtResource( 3 )
+
+[node name="Pil" type="Line2D" parent="ProsessVerdi"]
+position = Vector2( 48, 0 )
+points = PoolVector2Array( 65, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+joint_mode = 2
+
+[node name="Label" type="Label" parent="ProsessVerdi"]
+margin_top = -24.0
+margin_right = 107.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 4 )
+text = "Prosess verdi"
+
+[node name="Avvik" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 440.0
+margin_top = 240.0
+margin_right = 552.0
+margin_bottom = 288.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "65"
+valign = 1
+script = ExtResource( 2 )
+
+[node name="Pil" type="Line2D" parent="Avvik"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( -8, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+joint_mode = 2
+
+[node name="Pil2" type="Line2D" parent="Avvik"]
+position = Vector2( 120, -32 )
+points = PoolVector2Array( 64, 56, 64, -31, 67, -27, 61, -27, 64, -31 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+joint_mode = 2
+
+[node name="Pil" type="Line2D" parent="Avvik/Pil2"]
+position = Vector2( 0, -56 )
+points = PoolVector2Array( 64, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+joint_mode = 2
+
+[node name="Pil3" type="Line2D" parent="Avvik"]
+position = Vector2( 248, 80 )
+rotation = -3.14159
+points = PoolVector2Array( 64, 56, 64, -31, 67, -27, 61, -27, 64, -31 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+joint_mode = 2
+
+[node name="Pil" type="Line2D" parent="Avvik/Pil3"]
+position = Vector2( 128, -8 )
+rotation = -3.14159
+points = PoolVector2Array( 64, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+joint_mode = 2
+
+[node name="Label" type="Label" parent="Avvik"]
+margin_left = 24.0
+margin_top = -24.0
+margin_right = 67.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 4 )
+text = "Avvik"
+
+[node name="Minus" type="Label" parent="Avvik"]
+margin_left = 64.0
+margin_top = 40.0
+margin_right = 74.0
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 5 )
+text = "-"
+
+[node name="Setpunkt" type="LineEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 440.0
+margin_top = 352.0
+margin_right = 552.0
+margin_bottom = 400.0
+custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/normal = SubResource( 3 )
+text = "65"
+align = 1
+script = ExtResource( 4 )
+
+[node name="Pil" type="Line2D" parent="Setpunkt"]
+position = Vector2( -8, -32 )
+points = PoolVector2Array( 64, 32, 64, -31, 67, -27, 61, -27, 64, -31 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+joint_mode = 2
+
+[node name="Label" type="Label" parent="Setpunkt"]
+margin_top = 48.0
+margin_right = 107.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 4 )
+text = "Setpunkt"
+align = 1
+valign = 1
+
+[node name="Proporsjonal" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 688.0
+margin_top = 152.0
+margin_right = 816.0
+margin_bottom = 200.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "65"
+valign = 1
+script = ExtResource( 5 )
+
+[node name="Pil" type="Line2D" parent="Proporsjonal"]
+position = Vector2( 64, 0 )
+rotation = 6.3573e-08
+points = PoolVector2Array( 64, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+joint_mode = 2
+
+[node name="Pil5" type="Line2D" parent="Proporsjonal/Pil"]
+position = Vector2( 192, 80 )
+rotation = 3.14159
+points = PoolVector2Array( 64, 56, 64, -31, 67, -27, 61, -27, 64, -31 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+joint_mode = 2
+
+[node name="Label" type="Label" parent="Proporsjonal"]
+margin_left = 8.0
+margin_top = -24.0
+margin_right = 115.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 4 )
+text = "Proporsjonal"
+align = 1
+valign = 1
+
+[node name="Integral" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 688.0
+margin_top = 240.0
+margin_right = 816.0
+margin_bottom = 288.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "65"
+valign = 1
+script = ExtResource( 6 )
+
+[node name="Pil" type="Line2D" parent="Integral"]
+position = Vector2( 128, 0 )
+rotation = 6.3573e-08
+points = PoolVector2Array( 0, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+joint_mode = 2
+
+[node name="Label" type="Label" parent="Integral"]
+margin_left = 8.0
+margin_top = -24.0
+margin_right = 115.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 4 )
+text = "Integral"
+align = 1
+valign = 1
+
+[node name="Derivat" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 688.0
+margin_top = 328.0
+margin_right = 816.0
+margin_bottom = 376.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "65"
+valign = 1
+script = ExtResource( 7 )
+
+[node name="Pil" type="Line2D" parent="Derivat"]
+position = Vector2( 64, 0 )
+rotation = 6.3573e-08
+points = PoolVector2Array( 64, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+joint_mode = 2
+
+[node name="Pil5" type="Line2D" parent="Derivat/Pil"]
+position = Vector2( 63.9999, -32 )
+rotation = -6.3573e-08
+points = PoolVector2Array( 64, 56, 64, -31, 67, -27, 61, -27, 64, -31 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+joint_mode = 2
+
+[node name="Label" type="Label" parent="Derivat"]
+margin_left = 8.0
+margin_top = -24.0
+margin_right = 115.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 4 )
+text = "Derivat"
+align = 1
+valign = 1
+
+[node name="Pådrag" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 944.0
+margin_top = 240.0
+margin_right = 1072.0
+margin_bottom = 288.0
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+text = "65"
+valign = 1
+script = ExtResource( 8 )
+
+[node name="Pil" type="Line2D" parent="Pådrag"]
+position = Vector2( 64, 0 )
+points = PoolVector2Array( 65, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+joint_mode = 2
+
+[node name="Pluss" type="Label" parent="Pådrag"]
+margin_left = -80.0
+margin_right = -64.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 6 )
+text = "+"
+
+[node name="Label" type="Label" parent="Pådrag"]
+margin_left = 8.0
+margin_top = -48.0
+margin_right = 115.0
+margin_bottom = -1.0
+custom_fonts/font = SubResource( 4 )
+text = "Utgangsverdi
+(Pådrag)"
+align = 1
+valign = 1
+
+[node name="Kp" type="LineEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 536.0
+margin_top = 16.0
+margin_right = 648.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/normal = SubResource( 3 )
+text = "10"
+align = 1
+
+[node name="Label" type="Label" parent="Kp"]
+margin_left = -8.0
+margin_top = 48.0
+margin_right = 128.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 4 )
+text = "P forsterkning Kp"
+align = 1
+valign = 1
+
+[node name="Ti" type="LineEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 696.0
+margin_top = 16.0
+margin_right = 808.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/normal = SubResource( 3 )
+text = "50"
+align = 1
+
+[node name="Label" type="Label" parent="Ti"]
+margin_left = -8.0
+margin_top = 48.0
+margin_right = 128.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 4 )
+text = "Integral tid Ti"
+align = 1
+valign = 1
+
+[node name="Td" type="LineEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 856.0
+margin_top = 16.0
+margin_right = 968.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/normal = SubResource( 3 )
+text = "0"
+align = 1
+
+[node name="Label" type="Label" parent="Td"]
+margin_left = -8.0
+margin_top = 48.0
+margin_right = 128.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 4 )
+text = "Derivat tid Td"
+align = 1
+valign = 1
+
+[node name="InnFlow" type="LineEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 240.0
+margin_right = 128.0
+margin_bottom = 288.0
+custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/normal = SubResource( 3 )
+text = "300"
+align = 1
+
+[node name="Label" type="Label" parent="InnFlow"]
+margin_left = -16.0
+margin_top = 48.0
+margin_right = 120.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 4 )
+text = "Flow inn m3/t"
+align = 1
+valign = 1
+
+[node name="TankSize" type="LineEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 128.0
+margin_right = 128.0
+margin_bottom = 176.0
+custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/normal = SubResource( 3 )
+text = "10"
+align = 1
+
+[node name="Label" type="Label" parent="TankSize"]
+margin_top = 48.0
+margin_right = 144.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 4 )
+text = "Tank størrelse m3"
+align = 1
+valign = 1
+
+[node name="VentilSize" type="LineEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1152.0
+margin_top = 336.0
+margin_right = 1264.0
+margin_bottom = 384.0
+custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/normal = SubResource( 3 )
+text = "1200"
+align = 1
+
+[node name="Label" type="Label" parent="VentilSize"]
+margin_left = -16.0
+margin_top = 48.0
+margin_right = 128.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 4 )
+text = "Ventil Cv"
+align = 1
+valign = 1
+
+[node name="Målestøy" type="LineEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 352.0
+margin_right = 128.0
+margin_bottom = 400.0
+custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/normal = SubResource( 3 )
+text = "0.0"
+align = 1
+
+[node name="Label" type="Label" parent="Målestøy"]
+margin_left = -16.0
+margin_top = 48.0
+margin_right = 128.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 4 )
+text = "Målestøy %"
+align = 1
+valign = 1
+
+[node name="MålestøyHZ" type="LineEdit" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 432.0
+margin_right = 128.0
+margin_bottom = 480.0
+custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/normal = SubResource( 3 )
+text = "10"
+align = 1
+
+[node name="Label" type="Label" parent="MålestøyHZ"]
+margin_left = -16.0
+margin_top = 48.0
+margin_right = 128.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 4 )
+text = "Målestøy Hz"
+align = 1
+valign = 1
+
+[node name="Trend" type="Node2D" parent="."]
+
+[node name="Node2D" parent="Trend" instance=ExtResource( 10 )]
+position = Vector2( 192, 104 )
+
+[connection signal="text_entered" from="Setpunkt" to="Setpunkt" method="_on_Setpunkt_text_entered"]
+[connection signal="text_entered" from="Kp" to="Proporsjonal" method="_on_Kp_text_entered"]
+[connection signal="text_entered" from="Kp" to="Integral" method="_on_Kp_text_entered"]
+[connection signal="text_entered" from="Kp" to="Derivat" method="_on_Kp_text_entered"]
+[connection signal="text_entered" from="Ti" to="Integral" method="_on_Ti_text_entered"]
+[connection signal="text_entered" from="Td" to="Derivat" method="_on_Td_text_entered"]
+[connection signal="text_entered" from="InnFlow" to="." method="_on_InnFlow_text_entered"]
+[connection signal="text_entered" from="TankSize" to="." method="_on_TankSize_text_entered"]
+[connection signal="text_entered" from="VentilSize" to="Pådrag" method="_on_VentilSize_text_entered"]
+[connection signal="text_entered" from="Målestøy" to="." method="_on_Mlesty_text_entered"]
+[connection signal="text_entered" from="MålestøyHZ" to="." method="_on_MlestyHZ_text_entered"]
