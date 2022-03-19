@@ -12,10 +12,12 @@ var minValue = 0
 
 
 func _ready():
-#	for i in range(1990):
-#		values.append(rand_range(0, 2000))
 	calculate_point_distance()
 	scaleY = rect_size.y / 100
+	$Level.position.y = rect_size.y
+	$Setpunkt.position.y = rect_size.y
+	$Utgang.position.y = rect_size.y
+	$Ventil.position.y = rect_size.y
 	draw_trend()
 
 

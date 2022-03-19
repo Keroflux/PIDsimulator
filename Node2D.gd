@@ -7,10 +7,10 @@ var ventil
 
 
 func _ready():
-	lt = get_parent().get_node("ProsessVerdi")
-	sp = get_parent().get_node("Setpunkt")
-	utgang = get_parent().get_node("Pådrag")
-	ventil = get_parent().get_node("Ventil")
+	lt = get_parent().get_node("Blokkdiagram/ProsessVerdi")
+	sp = get_parent().get_node("Blokkdiagram/Setpunkt")
+	utgang = get_parent().get_node("Blokkdiagram/Pådrag")
+	ventil = get_parent().get_node("Blokkdiagram/Ventil")
 
 
 func read_trend():

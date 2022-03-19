@@ -10,4 +10,4 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	avvik.prosess_verdi = prosess_verdi
-	text = str(stepify(prosess_verdi, 0.1))
+	text = str(stepify(prosess_verdi, 0.01))

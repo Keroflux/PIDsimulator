@@ -21,5 +21,5 @@ func _physics_process(delta: float) -> void:
 	d = derivat.utgangsverdi
 	utgang = p + i + d
 	utgang = clamp(utgang, 0, 100)
-	text = str(stepify(utgang, 0.1))
+	text = str(stepify(utgang, 0.01))
 
