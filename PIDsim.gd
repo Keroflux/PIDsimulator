@@ -10,6 +10,7 @@ var current_noise: float = 0.0
 var noise_hz: int = 10
 var prosessverdi
 
+
 func _ready():
 	prosessverdi = get_node("ProsessVerdi")
 
@@ -17,7 +18,8 @@ func _ready():
 func _physics_process(delta):
 	if Engine.get_frames_drawn() % Engine.iterations_per_second / noise_hz == 0:
 		current_noise = rand_range(level_noise, -level_noise)
-	innhold += (inflow  * delta / 3600) - (outflow * delta / 3600)
+	
+	innhold += (inflow * delta / 3600) - (outflow * delta / 3600)
 	level = (innhold / volum * 100) + current_noise
 	prosessverdi.prosess_verdi = level
 	
