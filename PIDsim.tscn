@@ -702,6 +702,8 @@ custom_fonts/font = SubResource( 4 )
 text = "Ventilpossisjon"
 valign = 1
 
+[node name="Tween" type="Tween" parent="."]
+
 [connection signal="text_entered" from="Blokkdiagram/Setpunkt" to="Blokkdiagram/Setpunkt" method="_on_Setpunkt_text_entered"]
 [connection signal="text_entered" from="Kp" to="Blokkdiagram/Proporsjonal" method="_on_Kp_text_entered"]
 [connection signal="text_entered" from="Kp" to="Blokkdiagram/Integral" method="_on_Kp_text_entered"]
@@ -718,3 +720,4 @@ valign = 1
 [connection signal="text_entered" from="Målestøy" to="." method="_on_Mlesty_text_entered"]
 [connection signal="text_entered" from="MålestøyHZ" to="." method="_on_MlestyHZ_text_entered"]
 [connection signal="timeout" from="Trend/Timer" to="Trend" method="_on_Timer_timeout"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
