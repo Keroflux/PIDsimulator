@@ -72,7 +72,7 @@ margin_top = -24.0
 margin_right = 107.0
 margin_bottom = -2.0
 custom_fonts/font = SubResource( 4 )
-text = "Prosess verdi"
+text = "Process value"
 
 [node name="Avvik" type="Label" parent="Blokkdiagram"]
 anchor_right = 1.0
@@ -129,7 +129,7 @@ margin_top = -24.0
 margin_right = 43.0
 margin_bottom = -2.0
 custom_fonts/font = SubResource( 4 )
-text = "Avvik"
+text = "Error"
 
 [node name="Minus" type="Label" parent="Blokkdiagram/Avvik"]
 margin_left = -17.0
@@ -166,7 +166,7 @@ margin_top = 48.0
 margin_right = 107.0
 margin_bottom = 70.0
 custom_fonts/font = SubResource( 4 )
-text = "Setpunkt"
+text = "Setpoint"
 align = 1
 valign = 1
 
@@ -205,7 +205,7 @@ margin_top = -24.0
 margin_right = 115.0
 margin_bottom = -2.0
 custom_fonts/font = SubResource( 4 )
-text = "Proporsjonal
+text = "Proportional
 "
 align = 1
 valign = 1
@@ -276,7 +276,7 @@ margin_top = -24.0
 margin_right = 115.0
 margin_bottom = -2.0
 custom_fonts/font = SubResource( 4 )
-text = "Derivat"
+text = "Derivative"
 align = 1
 valign = 1
 
@@ -314,8 +314,7 @@ margin_top = -48.0
 margin_right = 115.0
 margin_bottom = -1.0
 custom_fonts/font = SubResource( 4 )
-text = "Utgangsverdi
-(Pådrag)"
+text = "Output value"
 align = 1
 valign = 1
 
@@ -353,7 +352,7 @@ margin_top = -40.0
 margin_right = 128.0
 margin_bottom = 7.0
 custom_fonts/font = SubResource( 4 )
-text = "Ventilpossisjon"
+text = "Valve possition"
 align = 1
 valign = 1
 
@@ -376,7 +375,7 @@ margin_top = 48.0
 margin_right = 128.0
 margin_bottom = 70.0
 custom_fonts/font = SubResource( 4 )
-text = "P forsterkning Kp"
+text = "P gain Kp"
 align = 1
 valign = 1
 
@@ -399,7 +398,7 @@ margin_top = 48.0
 margin_right = 128.0
 margin_bottom = 70.0
 custom_fonts/font = SubResource( 4 )
-text = "Integral tid Ti"
+text = "Integral time Ti"
 align = 1
 valign = 1
 
@@ -422,7 +421,7 @@ margin_top = 48.0
 margin_right = 128.0
 margin_bottom = 70.0
 custom_fonts/font = SubResource( 4 )
-text = "Derivat tid Td"
+text = "Derivative time Td"
 align = 1
 valign = 1
 
@@ -445,7 +444,7 @@ margin_top = 48.0
 margin_right = 120.0
 margin_bottom = 70.0
 custom_fonts/font = SubResource( 4 )
-text = "Flow inn m3/t"
+text = "Flow in m3/h"
 align = 1
 valign = 1
 
@@ -468,7 +467,7 @@ margin_top = 48.0
 margin_right = 148.0
 margin_bottom = 70.0
 custom_fonts/font = SubResource( 4 )
-text = "Maks % varisjon i flow"
+text = "Max % variation i flow"
 align = 1
 valign = 1
 
@@ -491,8 +490,8 @@ margin_top = 48.0
 margin_right = 140.0
 margin_bottom = 95.0
 custom_fonts/font = SubResource( 4 )
-text = "Flow variasjon 
-maks periode (sek)"
+text = "Flow variation
+period  (sec)"
 align = 1
 valign = 1
 
@@ -510,11 +509,12 @@ text = "10"
 align = 1
 
 [node name="Label" type="Label" parent="TankSize"]
+margin_left = -17.0
 margin_top = 48.0
-margin_right = 144.0
+margin_right = 127.0
 margin_bottom = 70.0
 custom_fonts/font = SubResource( 4 )
-text = "Tank størrelse m3"
+text = "Tank size m3"
 align = 1
 valign = 1
 
@@ -537,7 +537,7 @@ margin_top = 48.0
 margin_right = 128.0
 margin_bottom = 70.0
 custom_fonts/font = SubResource( 4 )
-text = "Ventil Cv m3/t"
+text = "Valve Cv m3/h"
 align = 1
 valign = 1
 
@@ -560,7 +560,7 @@ margin_top = 48.0
 margin_right = 117.0
 margin_bottom = 70.0
 custom_fonts/font = SubResource( 4 )
-text = "Ventil hastighet %/s"
+text = "Ventil speed %/s"
 align = 1
 valign = 1
 
@@ -583,7 +583,7 @@ margin_top = 48.0
 margin_right = 117.0
 margin_bottom = 70.0
 custom_fonts/font = SubResource( 4 )
-text = "Ventil dødbånd %"
+text = "Ventil deadband %"
 align = 1
 valign = 1
 
@@ -606,7 +606,8 @@ margin_top = 48.0
 margin_right = 128.0
 margin_bottom = 70.0
 custom_fonts/font = SubResource( 4 )
-text = "Målestøy %"
+text = "Measurment 
+noise %"
 align = 1
 valign = 1
 
@@ -629,7 +630,8 @@ margin_top = 48.0
 margin_right = 128.0
 margin_bottom = 70.0
 custom_fonts/font = SubResource( 4 )
-text = "Målestøy Hz"
+text = "Measurment 
+noise Hz"
 align = 1
 valign = 1
 
@@ -673,7 +675,7 @@ default_color = Color( 0.662745, 0.215686, 0.215686, 1 )
 margin_right = 144.0
 margin_bottom = 22.0
 custom_fonts/font = SubResource( 4 )
-text = "Nivå"
+text = "Level"
 valign = 1
 
 [node name="Setpunkt2" type="Label" parent="Trend/Trend"]
@@ -682,7 +684,7 @@ margin_left = 48.0
 margin_right = 192.0
 margin_bottom = 22.0
 custom_fonts/font = SubResource( 4 )
-text = "Setpunkt"
+text = "Setpoint"
 valign = 1
 
 [node name="Pådrag" type="Label" parent="Trend/Trend"]
@@ -691,7 +693,7 @@ margin_left = 128.0
 margin_right = 272.0
 margin_bottom = 22.0
 custom_fonts/font = SubResource( 4 )
-text = "Pådrag"
+text = "Output"
 valign = 1
 
 [node name="Ventil2" type="Label" parent="Trend/Trend"]
@@ -700,7 +702,7 @@ margin_left = 192.0
 margin_right = 336.0
 margin_bottom = 22.0
 custom_fonts/font = SubResource( 4 )
-text = "Ventilpossisjon"
+text = "Valve position"
 valign = 1
 
 [node name="Tween" type="Tween" parent="."]
