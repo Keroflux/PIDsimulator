@@ -8,7 +8,7 @@ onready var label_panel = get_parent().get_node("PanelContainer/VBoxContainer")
 
 
 func _ready() -> void:
-	for i in trends.size():
+	for i in trends.size()-1:
 		var t = trend_line.instance()
 		var l = trend_label.instance()
 		t.default_color = trend_color[i]
@@ -28,3 +28,7 @@ func _on_Timer_timeout() -> void:
 
 func add_trend():
 	pass
+
+
+func _on_Bakgrunn_color_changed(c):
+	color = c

@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Trend.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.309804, 0.309804, 0.309804, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.309804, 0.309804, 0.309804, 1 )
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
 
 [node name="Trend" type="Node2D"]
 position = Vector2( 418, 450 )
@@ -14,6 +24,7 @@ margin_left = -312.0
 margin_top = -160.0
 margin_right = 440.0
 margin_bottom = 176.0
+rect_clip_content = true
 color = Color( 0.172549, 0.172549, 0.172549, 1 )
 script = ExtResource( 2 )
 
@@ -24,11 +35,22 @@ margin_left = 440.0
 margin_top = -160.0
 margin_right = 608.0
 margin_bottom = 176.0
+custom_styles/panel = SubResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 161.0
-margin_bottom = 329.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 165.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Bakgrunn" type="ColorPickerButton" parent="PanelContainer/VBoxContainer"]
+margin_right = 30.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 30, 25 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [connection signal="timeout" from="Timer" to="Trend" method="_on_Timer_timeout"]
+[connection signal="color_changed" from="PanelContainer/VBoxContainer/Bakgrunn" to="Trend" method="_on_Bakgrunn_color_changed"]

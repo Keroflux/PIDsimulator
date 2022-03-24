@@ -18,6 +18,9 @@ func _ready():
 	position.y = trend_box.rect_size.y
 	var minmax = maxValue - minValue
 	scaleY = trend_box.rect_size.y / minmax
+#	for i in range(1819):
+#		var a = -10
+#		data_points.append(a)
 	draw_trend()
 
 
@@ -39,10 +42,11 @@ func draw_trend():
 
 
 func redraw_trend(data_point):
-	if data_points.size() > 1500:
+	if data_points.size() > 1820:
 		data_points.pop_front()
 	
 	data_points.append(data_point)
+	print(data_points.size())
 	
 	if data_points.size() > 1:
 		calculate_point_distance()
