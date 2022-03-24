@@ -1,5 +1,6 @@
 extends Label
 
+var type = "I"
 var utgangsverdi: float = 0.0
 var Ti: float = 50.0
 var Kp: float = 10.0

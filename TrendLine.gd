@@ -48,3 +48,8 @@ func redraw_trend(data_point):
 		calculate_point_distance()
 #		find_max()
 		draw_trend()
+
+
+func change_color(color):
+	default_color = color
+	

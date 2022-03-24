@@ -1,5 +1,6 @@
 extends Label
 
+var type = "Avvik"
 var avvik: float = 0.0
 var prosess_verdi: float = 0.0
 var setpunkt: float = 0.0

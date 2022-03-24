@@ -1,5 +1,6 @@
 extends Label
 
+var type = "D"
 var utgangsverdi: float = 0.0
 var Td: float = 0.0
 var Kp: float = 10

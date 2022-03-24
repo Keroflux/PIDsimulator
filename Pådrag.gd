@@ -1,5 +1,6 @@
 extends Label
 
+var type = "Pådrag"
 var utgang: float = 0.0
 var p: float = 0.0
 var i: float = 0.0

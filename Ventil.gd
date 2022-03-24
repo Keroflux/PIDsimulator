@@ -1,5 +1,6 @@
 extends Label
 
+var type = "Ventil"
 var ventilpossisjon: float = 0.0
 var ventilhastighet: float = 5.0
 var cv: float = 1200.0

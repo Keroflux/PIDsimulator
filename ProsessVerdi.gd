@@ -1,5 +1,6 @@
 extends Label
 
+var type = "Nivå"
 var avvik
 var prosess_verdi: float = 65.0
 var trend: float = 0.0

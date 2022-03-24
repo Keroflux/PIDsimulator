@@ -1,9 +1,10 @@
 extends LineEdit
 
-
+var type = "Setpunkt"
 var avvik
 var setpunkt: float = 65
 var trend: float = 0.0
+
 
 func _ready():
 	avvik = get_parent().get_node("Avvik")
