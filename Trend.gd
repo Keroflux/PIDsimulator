@@ -12,8 +12,9 @@ var minValue = 0
 
 
 func _ready():
+	var minmax = maxValue - minValue
 	calculate_point_distance()
-	scaleY = rect_size.y / 100
+	scaleY = rect_size.y / minmax
 	$Level.position.y = rect_size.y
 	$Setpunkt.position.y = rect_size.y
 	$Utgang.position.y = rect_size.y
