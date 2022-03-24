@@ -4,6 +4,7 @@ var utgang: float = 0.0
 var p: float = 0.0
 var i: float = 0.0
 var d: float = 0.0
+var trend: float = 0.0
 var proporsjonal
 var integral
 var derivat
@@ -21,5 +22,6 @@ func _physics_process(delta: float) -> void:
 	d = derivat.utgangsverdi
 	utgang = p + i + d
 	utgang = clamp(utgang, 0, 100)
+	trend = utgang
 	text = str(stepify(utgang, 0.01))
 

@@ -5,6 +5,7 @@ var ventilhastighet: float = 5.0
 var cv: float = 1200.0
 var flow: float = 0.0
 var deadband: float = 0.2
+var trend: float = 0.0
 var regulator
 var separator
 
@@ -26,6 +27,7 @@ func _physics_process(delta: float) -> void:
 	flow = cv * (ventilpossisjon / 100)
 	separator.outflow = flow
 	
+	trend = ventilpossisjon
 	text = str(stepify(ventilpossisjon, 0.01))
 
 

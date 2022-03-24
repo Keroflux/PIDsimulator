@@ -30,7 +30,6 @@ func _physics_process(delta):
 	if Engine.get_frames_drawn() % Engine.iterations_per_second / noise_hz == 0:
 		current_noise = rand_range(level_noise, -level_noise)
 	
-	print(flow_variation)
 	innhold += ((inflow + flow_var) * delta / 3600) - (outflow * delta / 3600)
 	level = (innhold / volum * 100) + current_noise
 	prosessverdi.prosess_verdi = level

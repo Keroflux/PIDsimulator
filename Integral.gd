@@ -5,6 +5,7 @@ var Ti: float = 50.0
 var Kp: float = 10.0
 var avvik: float = 0.0
 var i: float = 0.0
+var trend: float = 0.0
 var ventil
 
 
@@ -18,6 +19,7 @@ func _physics_process(delta: float) -> void:
 			utgangsverdi = (utgangsverdi + (avvik * delta * (Kp/Ti)))
 			utgangsverdi = clamp(utgangsverdi, 0, 100)
 	
+	trend = utgangsverdi
 	text = str(stepify(utgangsverdi, 0.01))
 
 
