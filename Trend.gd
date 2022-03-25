@@ -2,13 +2,13 @@ extends ColorRect
 
 var trend_label = preload("res://TrendLabel.tscn")
 var trend_line = preload("res://TrendLine.tscn")
-var trend_color = [Color(1.0, 1.0, 1.0), Color(0.0, 0.0, 1.0), Color(1.0, 0.0, 0.0), Color(0.0, 1.0, 0.0)]
+var trend_color = [Color(1.0, 1.0, 1.0), Color(0.0, 0.0, 1.0), Color(1.0, 0.0, 0.0), Color(0.0, 1.0, 0.0), Color(0.0, 1.0, 1.0)]
 onready var trends = [get_parent().get_parent().get_node("Blokkdiagram/ProsessVerdi"), get_parent().get_parent().get_node("Blokkdiagram/Setpunkt"),get_parent().get_parent().get_node("Blokkdiagram/Pådrag"),get_parent().get_parent().get_node("Blokkdiagram/Ventil")]
 onready var label_panel = get_parent().get_node("PanelContainer/VBoxContainer")
 
 
 func _ready() -> void:
-	for i in trends.size()-1:
+	for i in trends.size():
 		var t = trend_line.instance()
 		var l = trend_label.instance()
 		t.default_color = trend_color[i]
