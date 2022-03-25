@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Roboto-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://TrendLabel.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 1 )
@@ -20,9 +21,63 @@ custom_fonts/font = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
 text = "Nivå"
 valign = 1
+script = ExtResource( 2 )
 
 [node name="ColorPickerButton" type="ColorPickerButton" parent="."]
 margin_left = 121.0
 margin_top = 3.0
 margin_right = 149.0
 margin_bottom = 26.0
+
+[node name="Config" type="PanelContainer" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -128.0
+margin_right = 128.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Config"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 101.0
+margin_bottom = 121.0
+
+[node name="Label" type="Label" parent="Config/VBoxContainer"]
+margin_right = 94.0
+margin_bottom = 14.0
+text = "Max"
+
+[node name="Max" type="LineEdit" parent="Config/VBoxContainer"]
+margin_top = 18.0
+margin_right = 94.0
+margin_bottom = 42.0
+
+[node name="Label2" type="Label" parent="Config/VBoxContainer"]
+margin_top = 46.0
+margin_right = 94.0
+margin_bottom = 60.0
+text = "Min"
+
+[node name="Min" type="LineEdit" parent="Config/VBoxContainer"]
+margin_top = 64.0
+margin_right = 94.0
+margin_bottom = 88.0
+
+[node name="Lukk" type="Button" parent="Config/VBoxContainer"]
+margin_top = 92.0
+margin_right = 94.0
+margin_bottom = 112.0
+text = "Lukk"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 80.0
+margin_top = 4.0
+margin_right = 102.0
+margin_bottom = 26.0
+text = "*"
+
+[connection signal="pressed" from="Config/VBoxContainer/Lukk" to="." method="_on_Lukk_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

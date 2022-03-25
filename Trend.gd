@@ -15,6 +15,8 @@ func _ready() -> void:
 		
 		l.get_child(0).color = trend_color[i]
 		l.get_child(0).connect("color_changed", t, "change_color")
+		l.get_node("Config/VBoxContainer/Max").connect("text_entered", t, "change_max")
+		l.get_node("Config/VBoxContainer/Min").connect("text_entered", t, "change_min")
 		l.text = "  " + trends[i].type
 		
 		label_panel.add_child(l)

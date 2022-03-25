@@ -46,7 +46,6 @@ func redraw_trend(data_point):
 		data_points.pop_front()
 	
 	data_points.append(data_point)
-	print(data_points.size())
 	
 	if data_points.size() > 1:
 		calculate_point_distance()
@@ -56,4 +55,15 @@ func redraw_trend(data_point):
 
 func change_color(color):
 	default_color = color
-	
+
+
+func change_max(value):
+	maxValue = float(value)
+	var minmax = maxValue - minValue
+	scaleY = trend_box.rect_size.y / minmax
+
+
+func change_min(value):
+	minValue = float(value)
+	var minmax = maxValue - minValue
+	scaleY = trend_box.rect_size.y / minmax
