@@ -633,7 +633,7 @@ align = 1
 valign = 1
 
 [node name="Trend" parent="." instance=ExtResource( 12 )]
-position = Vector2( 623, 692 )
+position = Vector2( 254, 532 )
 
 [node name="Tween" type="Tween" parent="."]
 
