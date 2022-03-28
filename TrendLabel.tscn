@@ -43,7 +43,7 @@ margin_right = 128.0
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 101.0
-margin_bottom = 121.0
+margin_bottom = 143.0
 
 [node name="Label" type="Label" parent="Config/VBoxContainer"]
 margin_right = 94.0
@@ -66,10 +66,16 @@ margin_top = 64.0
 margin_right = 94.0
 margin_bottom = 88.0
 
-[node name="Lukk" type="Button" parent="Config/VBoxContainer"]
+[node name="Slett" type="Button" parent="Config/VBoxContainer"]
 margin_top = 92.0
 margin_right = 94.0
 margin_bottom = 112.0
+text = "Slett"
+
+[node name="Lukk" type="Button" parent="Config/VBoxContainer"]
+margin_top = 116.0
+margin_right = 94.0
+margin_bottom = 136.0
 text = "Lukk"
 
 [node name="Button" type="Button" parent="."]

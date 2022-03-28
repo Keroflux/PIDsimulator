@@ -37,20 +37,37 @@ margin_right = 608.0
 margin_bottom = 176.0
 custom_styles/panel = SubResource( 1 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VSplitContainer" type="VSplitContainer" parent="PanelContainer"]
 margin_left = 3.0
 margin_top = 3.0
 margin_right = 165.0
 margin_bottom = 333.0
+split_offset = 140
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VSplitContainer"]
+margin_right = 162.0
+margin_bottom = 293.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Bakgrunn" type="ColorPickerButton" parent="PanelContainer/VBoxContainer"]
+[node name="HBC" type="HBoxContainer" parent="PanelContainer/VSplitContainer"]
+margin_top = 305.0
+margin_right = 162.0
+margin_bottom = 330.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Bakgrunn" type="ColorPickerButton" parent="PanelContainer/VSplitContainer/HBC"]
 margin_right = 30.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 30, 25 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[connection signal="timeout" from="Timer" to="Trend" method="_on_Timer_timeout"]
-[connection signal="color_changed" from="PanelContainer/VBoxContainer/Bakgrunn" to="Trend" method="_on_Bakgrunn_color_changed"]
+[node name="Button" type="Button" parent="PanelContainer/VSplitContainer/HBC"]
+margin_left = 34.0
+margin_right = 101.0
+margin_bottom = 25.0
+text = "Ny trend"
+
+[connection signal="color_changed" from="PanelContainer/VSplitContainer/HBC/Bakgrunn" to="Trend" method="_on_Bakgrunn_color_changed"]

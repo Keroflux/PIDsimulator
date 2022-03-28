@@ -45,7 +45,7 @@ script = ExtResource( 9 )
 [node name="Blokkdiagram" type="Node2D" parent="."]
 position = Vector2( 664, 360 )
 
-[node name="ProsessVerdi" type="Label" parent="Blokkdiagram"]
+[node name="ProsessVerdi" type="Label" parent="Blokkdiagram" groups=["Trend"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -296.0
@@ -73,7 +73,7 @@ margin_bottom = -2.0
 custom_fonts/font = SubResource( 4 )
 text = "Prosess verdi"
 
-[node name="Avvik" type="Label" parent="Blokkdiagram"]
+[node name="Avvik" type="Label" parent="Blokkdiagram" groups=["Trend"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -296.0
@@ -138,7 +138,7 @@ margin_bottom = 35.0
 custom_fonts/font = SubResource( 5 )
 text = "-"
 
-[node name="Setpunkt" type="LineEdit" parent="Blokkdiagram"]
+[node name="Setpunkt" type="LineEdit" parent="Blokkdiagram" groups=["Trend"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -472.0
@@ -169,7 +169,7 @@ text = "Setpunkt"
 align = 1
 valign = 1
 
-[node name="Proporsjonal" type="Label" parent="Blokkdiagram"]
+[node name="Proporsjonal" type="Label" parent="Blokkdiagram" groups=["Trend"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -48.0
@@ -209,7 +209,7 @@ text = "Proporsjonal
 align = 1
 valign = 1
 
-[node name="Integral" type="Label" parent="Blokkdiagram"]
+[node name="Integral" type="Label" parent="Blokkdiagram" groups=["Trend"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -48.0
@@ -240,7 +240,7 @@ text = "Integral"
 align = 1
 valign = 1
 
-[node name="Derivat" type="Label" parent="Blokkdiagram"]
+[node name="Derivat" type="Label" parent="Blokkdiagram" groups=["Trend"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -48.0
@@ -279,7 +279,7 @@ text = "Derivat"
 align = 1
 valign = 1
 
-[node name="Pådrag" type="Label" parent="Blokkdiagram"]
+[node name="Pådrag" type="Label" parent="Blokkdiagram" groups=["Trend"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 208.0
@@ -318,7 +318,7 @@ text = "Utgangsverdi
 align = 1
 valign = 1
 
-[node name="Ventil" type="Label" parent="Blokkdiagram"]
+[node name="Ventil" type="Label" parent="Blokkdiagram" groups=["Trend"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 400.0
