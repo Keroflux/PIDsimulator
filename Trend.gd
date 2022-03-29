@@ -13,7 +13,7 @@ func _ready() -> void:
 		var l = trend_label.instance()
 		t.default_color = trend_color[i]
 		t.data_source = trends[i]
-		
+		l.data_point = trends[i]
 		l.get_child(0).get_child(0).color = trend_color[i]
 		l.get_child(0).get_child(0).connect("color_changed", t, "change_color")
 		l.get_node("Config/VBoxContainer/Max").connect("text_entered", t, "change_max")
@@ -73,4 +73,8 @@ func _on_Lukk_pressed():
 	$PanelContainer.hide()
 	for child in $PanelContainer/VBoxContainer/VBoxContainer.get_children():
 		child.queue_free()
-	
+
+
+func _on_Trend_resized():
+	for t in $PanelContainer2/HSplitContainer/Trend/TrendLines.get_children():
+		t.change_scale_y()

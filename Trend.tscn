@@ -102,6 +102,7 @@ margin_right = 147.0
 margin_bottom = 35.0
 text = "Lukk"
 
+[connection signal="resized" from="PanelContainer2/HSplitContainer/Trend" to="." method="_on_Trend_resized"]
 [connection signal="color_changed" from="PanelContainer2/HSplitContainer/PanelContainer/VSplitContainer/HBC/Bakgrunn" to="." method="_on_Bakgrunn_color_changed"]
 [connection signal="pressed" from="PanelContainer2/HSplitContainer/PanelContainer/VSplitContainer/HBC/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Lukk" to="." method="_on_Lukk_pressed"]

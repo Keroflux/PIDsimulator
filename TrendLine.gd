@@ -67,3 +67,9 @@ func change_min(value):
 	minValue = float(value)
 	var minmax = maxValue - minValue
 	scaleY = trend_box.rect_size.y / minmax
+
+
+func change_scale_y():
+	position.y = trend_box.rect_size.y
+	var minmax = maxValue - minValue
+	scaleY = trend_box.rect_size.y / minmax
