@@ -1,6 +1,6 @@
 extends Button
  
-var data_point = "E"
+var data_source = "E"
 
 
 func _ready():
@@ -10,7 +10,7 @@ func _ready():
 
 
 func _process(delta):
-	$HBoxContainer/Label2.text = str(stepify(data_point.trend, 0.01))
+	$HBoxContainer/Label2.text = str(stepify(data_source.trend, 0.01))
 
 
 func _on_Button_pressed():

@@ -13,7 +13,7 @@ func _ready() -> void:
 		var l = trend_label.instance()
 		t.default_color = trend_color[i]
 		t.data_source = trends[i]
-		l.data_point = trends[i]
+		l.data_source = trends[i]
 		l.get_child(0).get_child(0).color = trend_color[i]
 		l.get_child(0).get_child(0).connect("color_changed", t, "change_color")
 		l.get_node("Config/VBoxContainer/Max").connect("text_entered", t, "change_max")
@@ -37,6 +37,7 @@ func add_trend(data_point):
 	var t = trend_line.instance()
 	var l = trend_label.instance()
 	t.data_source = data_point
+	l.data_source = data_point
 #	l.get_child(0).get_child(0).color = trend_color[i]
 	l.get_child(0).get_child(0).connect("color_changed", t, "change_color")
 	l.get_node("Config/VBoxContainer/Max").connect("text_entered", t, "change_max")
