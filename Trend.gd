@@ -37,8 +37,9 @@ func add_trend(data_point):
 	var t = trend_line.instance()
 	var l = trend_label.instance()
 	t.data_source = data_point
+	t.default_color = random_color()
 	l.data_source = data_point
-#	l.get_child(0).get_child(0).color = trend_color[i]
+	l.get_child(0).get_child(0).color = t.default_color
 	l.get_child(0).get_child(0).connect("color_changed", t, "change_color")
 	l.get_node("Config/VBoxContainer/Max").connect("text_entered", t, "change_max")
 	l.get_node("Config/VBoxContainer/Min").connect("text_entered", t, "change_min")
@@ -49,6 +50,15 @@ func add_trend(data_point):
 	$PanelContainer2/HSplitContainer/Trend/TrendLines.add_child(t)
 	label_panel.add_child(l)
 	get_node("Timer").connect("timeout", t, "_on_Timer_timeout")
+
+
+func random_color() -> Color:
+	var r = rand_range(0.0, 1.0)
+	var g = rand_range(0.0, 1.0)
+	var b = rand_range(0.0, 1.0)
+	var c = Color(r, g, b)
+	
+	return c
 
 
 func remove_trend(trend, label):

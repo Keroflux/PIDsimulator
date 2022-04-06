@@ -87,6 +87,7 @@ size_flags_vertical = 0
 text = "Ny trend"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
 margin_left = 778.0
 margin_top = 6.0
 margin_right = 939.0
