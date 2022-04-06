@@ -1,7 +1,7 @@
 extends Node2D
 
 var trend_label = preload("res://TrendLabel.tscn")
-var trend_line = preload("res://TrendLine.tscn")
+var trend_line = preload("res://TrendLine2.tscn")
 var trend_color = [Color(1.0, 1.0, 1.0), Color(0.0, 0.0, 1.0), Color(1.0, 0.0, 0.0), Color(0.0, 1.0, 0.0), Color(0.0, 1.0, 1.0), Color(1.0, 1.0, 0.0), Color(1.0, 0.0, 1.0)]
 onready var trends = [get_parent().get_node("Blokkdiagram/ProsessVerdi"), get_parent().get_node("Blokkdiagram/Setpunkt"), get_parent().get_node("Blokkdiagram/Pådrag"), get_parent().get_node("Blokkdiagram/Ventil")]
 onready var label_panel = $PanelContainer2/HSplitContainer/PanelContainer/VSplitContainer/ScrollContainer/VBoxContainer
@@ -11,7 +11,8 @@ func _ready() -> void:
 	for i in trends.size():
 		var t = trend_line.instance()
 		var l = trend_label.instance()
-		t.default_color = trend_color[i]
+		t.color = trend_color[i]
+#		t.default_color = trend_color[i]
 		t.data_source = trends[i]
 		l.data_source = trends[i]
 		l.get_child(0).get_child(0).color = trend_color[i]
@@ -37,9 +38,11 @@ func add_trend(data_point):
 	var t = trend_line.instance()
 	var l = trend_label.instance()
 	t.data_source = data_point
-	t.default_color = random_color()
+	t.color = random_color()
+#	t.default_color = random_color()
 	l.data_source = data_point
-	l.get_child(0).get_child(0).color = t.default_color
+	l.get_child(0).get_child(0).color = t.color
+#	l.get_child(0).get_child(0).color = t.default_color
 	l.get_child(0).get_child(0).connect("color_changed", t, "change_color")
 	l.get_node("Config/VBoxContainer/Max").connect("text_entered", t, "change_max")
 	l.get_node("Config/VBoxContainer/Min").connect("text_entered", t, "change_min")
