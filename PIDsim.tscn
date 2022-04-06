@@ -39,7 +39,7 @@ font_data = ExtResource( 1 )
 size = 24
 font_data = ExtResource( 1 )
 
-[node name="PIDsim" type="Node2D"]
+[node name="PIDsim" type="Node2D" groups=["Trend"]]
 script = ExtResource( 9 )
 
 [node name="Blokkdiagram" type="Node2D" parent="."]

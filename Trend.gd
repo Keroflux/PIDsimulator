@@ -4,7 +4,7 @@ var trend_label = preload("res://TrendLabel.tscn")
 var trend_line = preload("res://TrendLine.tscn")
 var trend_color = [Color(1.0, 1.0, 1.0), Color(0.0, 0.0, 1.0), Color(1.0, 0.0, 0.0), Color(0.0, 1.0, 0.0), Color(0.0, 1.0, 1.0), Color(1.0, 1.0, 0.0), Color(1.0, 0.0, 1.0)]
 onready var trends = [get_parent().get_node("Blokkdiagram/ProsessVerdi"), get_parent().get_node("Blokkdiagram/Setpunkt"), get_parent().get_node("Blokkdiagram/Pådrag"), get_parent().get_node("Blokkdiagram/Ventil")]
-onready var label_panel = $PanelContainer2/HSplitContainer/PanelContainer/VSplitContainer/VBoxContainer
+onready var label_panel = $PanelContainer2/HSplitContainer/PanelContainer/VSplitContainer/ScrollContainer/VBoxContainer
 
 
 func _ready() -> void:

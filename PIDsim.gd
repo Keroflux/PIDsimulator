@@ -17,6 +17,8 @@ var flow_var_max_time: float = 60.0
 var time: float = 0.0
 var random: bool = false
 var prosessverdi
+var trend : float = 0.0
+var type = "Flow"
 
 
 func _ready():
@@ -33,6 +35,7 @@ func _physics_process(delta):
 	innhold += ((inflow + flow_var) * delta / 3600) - (outflow * delta / 3600)
 	level = (innhold / volum * 100) + current_noise
 	prosessverdi.prosess_verdi = level
+	trend = inflow + flow_var
 
 
 func random_flow():
