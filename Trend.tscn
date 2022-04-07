@@ -22,69 +22,88 @@ autostart = true
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 margin_right = 760.0
-margin_bottom = 316.0
+margin_bottom = 356.0
 
-[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer2"]
+[node name="VBC" type="VBoxContainer" parent="PanelContainer2"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 753.0
-margin_bottom = 309.0
+margin_bottom = 349.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer2/VBC"]
+margin_right = 746.0
+margin_bottom = 304.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 split_offset = 575
 
-[node name="Trend" type="ColorRect" parent="PanelContainer2/HSplitContainer"]
+[node name="Trend" type="ColorRect" parent="PanelContainer2/VBC/HSplitContainer"]
 margin_right = 575.0
-margin_bottom = 302.0
+margin_bottom = 304.0
 rect_clip_content = true
 color = Color( 0.172549, 0.172549, 0.172549, 1 )
 
-[node name="TrendLines" type="Node2D" parent="PanelContainer2/HSplitContainer/Trend"]
+[node name="TrendLines" type="Node2D" parent="PanelContainer2/VBC/HSplitContainer/Trend"]
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer2/HSplitContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer2/VBC/HSplitContainer"]
 margin_left = 587.0
 margin_right = 746.0
-margin_bottom = 302.0
+margin_bottom = 304.0
 rect_clip_content = true
 custom_styles/panel = SubResource( 1 )
 
-[node name="VSplitContainer" type="VSplitContainer" parent="PanelContainer2/HSplitContainer/PanelContainer"]
+[node name="VSplitContainer" type="VSplitContainer" parent="PanelContainer2/VBC/HSplitContainer/PanelContainer"]
 margin_left = 3.0
 margin_top = 3.0
 margin_right = 156.0
-margin_bottom = 299.0
+margin_bottom = 301.0
 split_offset = 140
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer2/HSplitContainer/PanelContainer/VSplitContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer2/VBC/HSplitContainer/PanelContainer/VSplitContainer"]
 margin_right = 153.0
-margin_bottom = 259.0
+margin_bottom = 298.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2/HSplitContainer/PanelContainer/VSplitContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2/VBC/HSplitContainer/PanelContainer/VSplitContainer/ScrollContainer"]
 margin_right = 153.0
-margin_bottom = 259.0
+margin_bottom = 298.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBC" type="HBoxContainer" parent="PanelContainer2/HSplitContainer/PanelContainer/VSplitContainer"]
-margin_top = 271.0
-margin_right = 153.0
-margin_bottom = 296.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer2/VBC"]
+margin_top = 308.0
+margin_right = 746.0
+margin_bottom = 342.0
 
-[node name="Bakgrunn" type="ColorPickerButton" parent="PanelContainer2/HSplitContainer/PanelContainer/VSplitContainer/HBC"]
-margin_right = 30.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 30, 25 )
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer2/VBC/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 739.0
+margin_bottom = 27.0
+
+[node name="Bakgrunn" type="ColorPickerButton" parent="PanelContainer2/VBC/PanelContainer/HBoxContainer"]
+margin_right = 25.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 25, 15 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Button" type="Button" parent="PanelContainer2/HSplitContainer/PanelContainer/VSplitContainer/HBC"]
-margin_left = 34.0
-margin_right = 101.0
+[node name="Button" type="Button" parent="PanelContainer2/VBC/PanelContainer/HBoxContainer"]
+margin_left = 29.0
+margin_right = 96.0
 margin_bottom = 20.0
-size_flags_vertical = 0
 text = "Ny trend"
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer2/VBC/PanelContainer/HBoxContainer"]
+margin_left = 100.0
+margin_right = 166.0
+margin_bottom = 20.0
+text = "1 min"
+items = [ "1 min", null, false, 0, null, "5 min", null, false, 1, null, "15 min", null, false, 2, null, "30 min", null, false, 3, null, "60 min", null, false, 4, null ]
+selected = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 visible = false
@@ -109,7 +128,8 @@ margin_right = 147.0
 margin_bottom = 35.0
 text = "Lukk"
 
-[connection signal="resized" from="PanelContainer2/HSplitContainer/Trend" to="." method="_on_Trend_resized"]
-[connection signal="color_changed" from="PanelContainer2/HSplitContainer/PanelContainer/VSplitContainer/HBC/Bakgrunn" to="." method="_on_Bakgrunn_color_changed"]
-[connection signal="pressed" from="PanelContainer2/HSplitContainer/PanelContainer/VSplitContainer/HBC/Button" to="." method="_on_Button_pressed"]
+[connection signal="resized" from="PanelContainer2/VBC/HSplitContainer/Trend" to="." method="_on_Trend_resized"]
+[connection signal="color_changed" from="PanelContainer2/VBC/PanelContainer/HBoxContainer/Bakgrunn" to="." method="_on_Bakgrunn_color_changed"]
+[connection signal="pressed" from="PanelContainer2/VBC/PanelContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="item_selected" from="PanelContainer2/VBC/PanelContainer/HBoxContainer/OptionButton" to="." method="_on_OptionButton_item_selected"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Lukk" to="." method="_on_Lukk_pressed"]

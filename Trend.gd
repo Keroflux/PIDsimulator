@@ -1,10 +1,11 @@
 extends Node2D
+signal time_changed
 
 var trend_label = preload("res://TrendLabel.tscn")
 var trend_line = preload("res://TrendLine2.tscn")
 var trend_color = [Color(1.0, 1.0, 1.0), Color(0.0, 0.0, 1.0), Color(1.0, 0.0, 0.0), Color(0.0, 1.0, 0.0), Color(0.0, 1.0, 1.0), Color(1.0, 1.0, 0.0), Color(1.0, 0.0, 1.0)]
 onready var trends = [get_parent().get_node("Blokkdiagram/ProsessVerdi"), get_parent().get_node("Blokkdiagram/Setpunkt"), get_parent().get_node("Blokkdiagram/Pådrag"), get_parent().get_node("Blokkdiagram/Ventil")]
-onready var label_panel = $PanelContainer2/HSplitContainer/PanelContainer/VSplitContainer/ScrollContainer/VBoxContainer
+onready var label_panel = $PanelContainer2/VBC/HSplitContainer/PanelContainer/VSplitContainer/ScrollContainer/VBoxContainer
 
 
 func _ready() -> void:
@@ -12,8 +13,10 @@ func _ready() -> void:
 		var t = trend_line.instance()
 		var l = trend_label.instance()
 		t.color = trend_color[i]
+		connect("time_changed", t, "change_time_scale")
 #		t.default_color = trend_color[i]
 		t.data_source = trends[i]
+		t.timer = $Timer
 		l.data_source = trends[i]
 		l.get_child(0).get_child(0).color = trend_color[i]
 		l.get_child(0).get_child(0).connect("color_changed", t, "change_color")
@@ -25,7 +28,7 @@ func _ready() -> void:
 		l.get_child(0).get_child(1).text = trends[i].type
 		
 		label_panel.add_child(l)
-		$PanelContainer2/HSplitContainer/Trend/TrendLines.add_child(t)
+		$PanelContainer2/VBC/HSplitContainer/Trend/TrendLines.add_child(t)
 		get_node("Timer").connect("timeout", t, "_on_Timer_timeout")
 
 
@@ -39,7 +42,9 @@ func add_trend(data_point):
 	var l = trend_label.instance()
 	t.data_source = data_point
 	t.color = random_color()
+	connect("time_changed", t, "change_time_scale")
 #	t.default_color = random_color()
+	t.timer = $Timer
 	l.data_source = data_point
 	l.get_child(0).get_child(0).color = t.color
 #	l.get_child(0).get_child(0).color = t.default_color
@@ -50,7 +55,7 @@ func add_trend(data_point):
 	l.get_node("Config/VBoxContainer/Min").text = str(t.minValue)
 	l.get_node("Config/VBoxContainer/Slett").connect("pressed", self, "remove_trend", [t, l])
 	l.get_child(0).get_child(1).text = data_point.type
-	$PanelContainer2/HSplitContainer/Trend/TrendLines.add_child(t)
+	$PanelContainer2/VBC/HSplitContainer/Trend/TrendLines.add_child(t)
 	label_panel.add_child(l)
 	get_node("Timer").connect("timeout", t, "_on_Timer_timeout")
 
@@ -70,7 +75,7 @@ func remove_trend(trend, label):
 
 
 func _on_Bakgrunn_color_changed(c):
-	$PanelContainer2/HSplitContainer/Trend.color = c
+	$PanelContainer2/VBC/HSplitContainer/Trend.color = c
 
 
 func _on_Button_pressed():
@@ -90,5 +95,18 @@ func _on_Lukk_pressed():
 
 
 func _on_Trend_resized():
-	for t in $PanelContainer2/HSplitContainer/Trend/TrendLines.get_children():
+	for t in $PanelContainer2/VBC/HSplitContainer/Trend/TrendLines.get_children():
 		t.change_scale_y()
+
+
+func _on_OptionButton_item_selected(index):
+	if index == 0:
+		emit_signal("time_changed", 60)
+	elif index == 1:
+		emit_signal("time_changed", 300)
+	elif index == 2:
+		emit_signal("time_changed", 900)
+	elif index == 3:
+		emit_signal("time_changed", 1800)
+	elif index == 4:
+		emit_signal("time_changed", 3600)

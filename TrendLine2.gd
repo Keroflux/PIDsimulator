@@ -13,6 +13,8 @@ var pos = Vector2(0,0)
 var trend = [Vector2(0,0), Vector2(0,0)]
 var color = Color(1.0, 1.0, 1.0)
 var parent
+var time = 600
+var timer
 
 
 func _ready():
@@ -45,7 +47,7 @@ func draw_trend():
 
 func redraw_trend(data_point):
 	#time = sec/timer.wait_time
-	if data_points.size() > 600:
+	if data_points.size() > time:
 		data_points.pop_front()
 	
 	data_points.append(data_point)
@@ -80,3 +82,9 @@ func change_scale_y():
 	pos.y = parent.rect_size.y
 	var minmax = maxValue - minValue
 	scaleY = parent.rect_size.y / minmax
+
+
+func change_time_scale(t):
+	time = t / timer.wait_time
+	while data_points.size() > time:
+		data_points.pop_front()
