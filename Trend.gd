@@ -1,11 +1,15 @@
 extends Node2D
 signal time_changed
 
+onready var top_bar = $PanelContainer2/VBC/TopBar 
 var trend_label = preload("res://TrendLabel.tscn")
 var trend_line = preload("res://TrendLine2.tscn")
 var trend_color = [Color(1.0, 1.0, 1.0), Color(0.0, 0.0, 1.0), Color(1.0, 0.0, 0.0), Color(0.0, 1.0, 0.0), Color(0.0, 1.0, 1.0), Color(1.0, 1.0, 0.0), Color(1.0, 0.0, 1.0)]
 onready var trends = [get_parent().get_node("Blokkdiagram/ProsessVerdi"), get_parent().get_node("Blokkdiagram/Setpunkt"), get_parent().get_node("Blokkdiagram/Pådrag"), get_parent().get_node("Blokkdiagram/Ventil")]
 onready var label_panel = $PanelContainer2/VBC/HSplitContainer/PanelContainer/VSplitContainer/ScrollContainer/VBoxContainer
+var mouse_inside: bool = false
+var m_pos: Vector2 = Vector2(0, 0)
+var move: bool = false
 
 
 func _ready() -> void:
@@ -110,3 +114,25 @@ func _on_OptionButton_item_selected(index):
 		emit_signal("time_changed", 1800)
 	elif index == 4:
 		emit_signal("time_changed", 3600)
+
+
+func _on_TopBar_mouse_entered():
+	mouse_inside = true
+
+
+func _on_TopBar_mouse_exited():
+	mouse_inside = false
+
+
+func _input(event):
+	if  mouse_inside:
+		if event.is_action_pressed("left_mouse"):
+			m_pos = get_global_mouse_position() - global_position
+			move = true
+		if event.is_action_released("left_mouse"):
+			move = false
+
+
+func _process(delta):
+	if move:
+		global_position = get_global_mouse_position() - m_pos
