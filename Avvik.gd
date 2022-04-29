@@ -21,5 +21,6 @@ func _physics_process(delta: float) -> void:
 	p.avvik = avvik
 	i.avvik = avvik
 	d.avvik = avvik
+	d.prosessverdi = prosess_verdi
 	text = str(stepify(avvik, 0.01))
 	

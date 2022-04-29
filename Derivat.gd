@@ -7,11 +7,14 @@ var Kp: float = 10
 var avvik: float = 0.0
 var forrige_avvik: float = 0.0
 var trend: float = 0.0
+var prosessverdi: float = 0.0
 
 
 func _physics_process(delta: float) -> void:
-	utgangsverdi = ((avvik - forrige_avvik) / delta) * Td * Kp
-	forrige_avvik = avvik
+	utgangsverdi = ((prosessverdi - forrige_avvik) / delta) * Td * Kp
+#	utgangsverdi = ((avvik - forrige_avvik) / delta) * Td * Kp
+	forrige_avvik = prosessverdi
+#	forrige_avvik = avvik
 	
 	trend = utgangsverdi
 	text = str(stepify(utgangsverdi, 0.01))
