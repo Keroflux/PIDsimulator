@@ -117,19 +117,28 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 154.0
 margin_bottom = 194.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/separation = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 margin_right = 147.0
+margin_bottom = 20.0
 
-[node name="Lukk" type="Button" parent="PanelContainer/VBoxContainer"]
-margin_top = 15.0
-margin_right = 147.0
-margin_bottom = 35.0
+[node name="Lukk" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+margin_right = 41.0
+margin_bottom = 20.0
 text = "Lukk"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 35.0
+margin_right = 147.0
+margin_bottom = 187.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [connection signal="resized" from="PanelContainer2/VBC/HSplitContainer/Trend" to="." method="_on_Trend_resized"]
 [connection signal="color_changed" from="PanelContainer2/VBC/PanelContainer/HBoxContainer/Bakgrunn" to="." method="_on_Bakgrunn_color_changed"]
 [connection signal="pressed" from="PanelContainer2/VBC/PanelContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="item_selected" from="PanelContainer2/VBC/PanelContainer/HBoxContainer/OptionButton" to="." method="_on_OptionButton_item_selected"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Lukk" to="." method="_on_Lukk_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/Lukk" to="." method="_on_Lukk_pressed"]

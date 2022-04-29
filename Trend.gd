@@ -80,12 +80,12 @@ func _on_Bakgrunn_color_changed(c):
 
 func _on_Button_pressed():
 	if not $PanelContainer.visible:
-		$PanelContainer.show()
 		for tag in get_tree().get_nodes_in_group("Trend"):
 			var a = Button.new()
 			a.text = tag.type
 			a.connect("pressed", self, "add_trend", [tag])
 			$PanelContainer/VBoxContainer/VBoxContainer.add_child(a)
+		$PanelContainer.show()
 
 
 func _on_Lukk_pressed():
