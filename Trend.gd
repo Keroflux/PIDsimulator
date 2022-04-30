@@ -1,15 +1,16 @@
 extends Node2D
 signal time_changed
 
-onready var top_bar = $PanelContainer2/VBC/TopBar 
-var trend_label = preload("res://TrendLabel.tscn")
-var trend_line = preload("res://TrendLine2.tscn")
-var trend_color = [Color(1.0, 1.0, 1.0), Color(0.0, 0.0, 1.0), Color(1.0, 0.0, 0.0), Color(0.0, 1.0, 0.0), Color(0.0, 1.0, 1.0), Color(1.0, 1.0, 0.0), Color(1.0, 0.0, 1.0)]
-onready var trends = [get_parent().get_node("Blokkdiagram/ProsessVerdi"), get_parent().get_node("Blokkdiagram/Setpunkt"), get_parent().get_node("Blokkdiagram/Pådrag"), get_parent().get_node("Blokkdiagram/Ventil")]
-onready var label_panel = $PanelContainer2/VBC/HSplitContainer/PanelContainer/VSplitContainer/ScrollContainer/VBoxContainer
+onready var top_bar: Node = $PanelContainer2/VBC/TopBar 
+var trend_label: PackedScene = preload("res://TrendLabel.tscn")
+var trend_line: PackedScene = preload("res://TrendLine2.tscn")
+var trend_color: Array = [Color(1.0, 1.0, 1.0), Color(0.0, 0.0, 1.0), Color(1.0, 0.0, 0.0), Color(0.0, 1.0, 0.0), Color(0.0, 1.0, 1.0), Color(1.0, 1.0, 0.0), Color(1.0, 0.0, 1.0)]
+onready var trends: Array = [get_parent().get_node("Blokkdiagram/ProsessVerdi"), get_parent().get_node("Blokkdiagram/Setpunkt"), get_parent().get_node("Blokkdiagram/Pådrag"), get_parent().get_node("Blokkdiagram/Ventil")]
+onready var label_panel: Node = $PanelContainer2/VBC/HSplitContainer/PanelContainer/VSplitContainer/ScrollContainer/VBoxContainer
 var mouse_inside: bool = false
 var m_pos: Vector2 = Vector2(0, 0)
 var move: bool = false
+var time_scale: int = 60
 
 
 func _ready() -> void:
@@ -41,7 +42,7 @@ func _on_Timer_timeout() -> void:
 		$PanelContainer2/HSplitContainer/Trend/TrendLines.get_child(i).redraw_trend(trends[i].trend)
 
 
-func add_trend(data_point):
+func add_trend(data_point: Node) -> void:
 	var t = trend_line.instance()
 	var l = trend_label.instance()
 	t.data_source = data_point
@@ -49,6 +50,7 @@ func add_trend(data_point):
 	connect("time_changed", t, "change_time_scale")
 #	t.default_color = random_color()
 	t.timer = $Timer
+	t.change_time_scale(time_scale)
 	l.data_source = data_point
 	l.get_child(0).get_child(0).color = t.color
 #	l.get_child(0).get_child(0).color = t.default_color
@@ -73,16 +75,16 @@ func random_color() -> Color:
 	return c
 
 
-func remove_trend(trend, label):
+func remove_trend(trend: Node, label: Node) -> void:
 	label.queue_free()
 	trend.queue_free()
 
 
-func _on_Bakgrunn_color_changed(c):
+func _on_Bakgrunn_color_changed(c) -> void:
 	$PanelContainer2/VBC/HSplitContainer/Trend.color = c
 
 
-func _on_Button_pressed():
+func _on_Button_pressed() -> void:
 	if not $PanelContainer.visible:
 		for tag in get_tree().get_nodes_in_group("Trend"):
 			var a = Button.new()
@@ -92,39 +94,44 @@ func _on_Button_pressed():
 		$PanelContainer.show()
 
 
-func _on_Lukk_pressed():
+func _on_Lukk_pressed() -> void:
 	$PanelContainer.hide()
 	for child in $PanelContainer/VBoxContainer/VBoxContainer.get_children():
 		child.queue_free()
 
 
-func _on_Trend_resized():
+func _on_Trend_resized() -> void:
 	for t in $PanelContainer2/VBC/HSplitContainer/Trend/TrendLines.get_children():
 		t.change_scale_y()
 
 
-func _on_OptionButton_item_selected(index):
+func _on_OptionButton_item_selected(index: int) -> void:
 	if index == 0:
 		emit_signal("time_changed", 60)
+		time_scale = 60
 	elif index == 1:
 		emit_signal("time_changed", 300)
+		time_scale = 300
 	elif index == 2:
 		emit_signal("time_changed", 900)
+		time_scale = 900
 	elif index == 3:
 		emit_signal("time_changed", 1800)
+		time_scale = 1800
 	elif index == 4:
 		emit_signal("time_changed", 3600)
+		time_scale = 3600
 
 
-func _on_TopBar_mouse_entered():
+func _on_TopBar_mouse_entered() -> void:
 	mouse_inside = true
 
 
-func _on_TopBar_mouse_exited():
+func _on_TopBar_mouse_exited() -> void:
 	mouse_inside = false
 
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if  mouse_inside:
 		if event.is_action_pressed("left_mouse"):
 			m_pos = get_global_mouse_position() - global_position
@@ -133,6 +140,6 @@ func _input(event):
 			move = false
 
 
-func _process(delta):
+func _process(_delta: float) -> void:
 	if move:
 		global_position = get_global_mouse_position() - m_pos

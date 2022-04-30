@@ -1,13 +1,13 @@
 extends Label
 
-var type = "Avvik"
+var type: String = "Avvik"
 var avvik: float = 0.0
 var prosess_verdi: float = 0.0
 var setpunkt: float = 0.0
 var trend: float = 0.0
-var p
-var i 
-var d
+var p: Node
+var i: Node 
+var d: Node
 
 func _ready():
 	p = get_parent().get_node("Proporsjonal")
@@ -15,7 +15,7 @@ func _ready():
 	d = get_parent().get_node("Derivat")
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	avvik = prosess_verdi - setpunkt
 	trend = avvik
 	p.avvik = avvik

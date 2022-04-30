@@ -1,6 +1,6 @@
 extends Label
 
-var type = "D"
+var type: String = "D"
 var utgangsverdi: float = 0.0
 var Td: float = 0.0
 var Kp: float = 10
@@ -20,9 +20,9 @@ func _physics_process(delta: float) -> void:
 	text = str(stepify(utgangsverdi, 0.01))
 
 
-func _on_Td_text_entered(new_text):
+func _on_Td_text_entered(new_text: String) -> void:
 	Td = float(new_text)
 
 
-func _on_Kp_text_entered(new_text):
+func _on_Kp_text_entered(new_text: String) -> void:
 	Kp = float(new_text)
