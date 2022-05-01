@@ -66,13 +66,13 @@ func change_color(c) -> void:
 	color = c
 
 
-func change_max(value: float) -> void:
+func change_max(value: String) -> void:
 	maxValue = float(value)
 	var minmax = maxValue - minValue
 	scaleY = parent.rect_size.y / minmax
 
 
-func change_min(value: float) -> void:
+func change_min(value: String) -> void:
 	minValue = float(value)
 	var minmax = maxValue - minValue
 	scaleY = parent.rect_size.y / minmax
