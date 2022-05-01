@@ -5,10 +5,10 @@ var data_points: Array = []
 var data_source: Node
 var trend_box: Node
 var distance: float
-var newDistx: float = 0
-var scaleY: float = 0
-var maxValue: float = 100
-var minValue: float = 0
+var new_dist_x: float = 0
+var scale_y: float = 0
+var max_value: float = 100
+var min_value: float = 0
 var pos: Vector2 = Vector2(0,0)
 var trend: Array = [Vector2(0,0), Vector2(0,0)]
 var color: Color = Color(1.0, 1.0, 1.0)
@@ -22,8 +22,8 @@ func _ready() -> void:
 	calculate_point_distance()
 	pos.x = 0
 	pos.y = parent.rect_size.y
-	var minmax = maxValue - minValue
-	scaleY = parent.rect_size.y / minmax
+	var minmax: float = max_value - min_value
+	scale_y = parent.rect_size.y / minmax
 #	draw_trend()
 
 
@@ -37,12 +37,12 @@ func _on_Timer_timeout() -> void:
 
 
 func draw_trend() -> void:
-	newDistx = 0
+	new_dist_x = 0
 	trend.clear()
 	for i in data_points:
-		var a = (-i + minValue) * scaleY
-		trend.append(Vector2(newDistx, parent.rect_size.y + a))
-		newDistx += distance
+		var a: float = (-i + min_value) * scale_y
+		trend.append(Vector2(new_dist_x, parent.rect_size.y + a))
+		new_dist_x += distance
 
 
 func redraw_trend(data_point: float) -> void:
@@ -67,21 +67,21 @@ func change_color(c) -> void:
 
 
 func change_max(value: String) -> void:
-	maxValue = float(value)
-	var minmax = maxValue - minValue
-	scaleY = parent.rect_size.y / minmax
+	max_value = float(value)
+	var minmax: float = max_value - min_value
+	scale_y = parent.rect_size.y / minmax
 
 
 func change_min(value: String) -> void:
-	minValue = float(value)
-	var minmax = maxValue - minValue
-	scaleY = parent.rect_size.y / minmax
+	min_value = float(value)
+	var minmax: float = max_value - min_value
+	scale_y = parent.rect_size.y / minmax
 
 
 func change_scale_y() -> void:
 	pos.y = parent.rect_size.y
-	var minmax = maxValue - minValue
-	scaleY = parent.rect_size.y / minmax
+	var minmax: float = max_value - min_value
+	scale_y = parent.rect_size.y / minmax
 
 
 func change_time_scale(t: int) -> void:

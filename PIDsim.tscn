@@ -637,6 +637,15 @@ position = Vector2( 296, 525 )
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="NyTrend" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 896.0
+margin_top = 8.0
+margin_right = 1008.0
+margin_bottom = 56.0
+text = "Nytt trendvindu"
+
 [connection signal="text_entered" from="Blokkdiagram/Setpunkt" to="Blokkdiagram/Setpunkt" method="_on_Setpunkt_text_entered"]
 [connection signal="text_entered" from="Kp" to="Blokkdiagram/Proporsjonal" method="_on_Kp_text_entered"]
 [connection signal="text_entered" from="Kp" to="Blokkdiagram/Integral" method="_on_Kp_text_entered"]
@@ -653,3 +662,4 @@ position = Vector2( 296, 525 )
 [connection signal="text_entered" from="Målestøy" to="." method="_on_Mlesty_text_entered"]
 [connection signal="text_entered" from="MålestøyHZ" to="." method="_on_MlestyHZ_text_entered"]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
+[connection signal="pressed" from="NyTrend" to="." method="_on_NyTrend_pressed"]

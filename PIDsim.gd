@@ -79,3 +79,9 @@ func _on_FlowVariasjonTid_text_entered(new_text: String) -> void:
 
 func _on_Tween_tween_all_completed() -> void:
 	random_flow()
+
+
+func _on_NyTrend_pressed():
+	var a = load("res://Trend.tscn")
+	a = a.instance()
+	add_child(a)

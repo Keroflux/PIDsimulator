@@ -1,6 +1,6 @@
 extends Button
  
-var data_source = "E"
+var data_source: Node
 
 
 func _ready() -> void:

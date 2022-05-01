@@ -15,8 +15,8 @@ var time_scale: int = 60
 
 func _ready() -> void:
 	for i in trends.size():
-		var t = trend_line.instance()
-		var l = trend_label.instance()
+		var t: Node = trend_line.instance()
+		var l: Node = trend_label.instance()
 		t.color = trend_color[i]
 		connect("time_changed", t, "change_time_scale")
 #		t.default_color = trend_color[i]
@@ -27,8 +27,8 @@ func _ready() -> void:
 		l.get_child(0).get_child(0).connect("color_changed", t, "change_color")
 		l.get_node("Config/VBoxContainer/Max").connect("text_entered", t, "change_max")
 		l.get_node("Config/VBoxContainer/Min").connect("text_entered", t, "change_min")
-		l.get_node("Config/VBoxContainer/Max").text = str(t.maxValue)
-		l.get_node("Config/VBoxContainer/Min").text = str(t.minValue)
+		l.get_node("Config/VBoxContainer/Max").text = str(t.max_value)
+		l.get_node("Config/VBoxContainer/Min").text = str(t.min_value)
 		l.get_node("Config/VBoxContainer/Slett").connect("pressed", self, "remove_trend", [t, l])
 		l.get_child(0).get_child(1).text = trends[i].type
 		
@@ -43,8 +43,8 @@ func _on_Timer_timeout() -> void:
 
 
 func add_trend(data_point: Node) -> void:
-	var t = trend_line.instance()
-	var l = trend_label.instance()
+	var t: Node = trend_line.instance()
+	var l: Node = trend_label.instance()
 	t.data_source = data_point
 	t.color = random_color()
 	connect("time_changed", t, "change_time_scale")
@@ -57,8 +57,8 @@ func add_trend(data_point: Node) -> void:
 	l.get_child(0).get_child(0).connect("color_changed", t, "change_color")
 	l.get_node("Config/VBoxContainer/Max").connect("text_entered", t, "change_max")
 	l.get_node("Config/VBoxContainer/Min").connect("text_entered", t, "change_min")
-	l.get_node("Config/VBoxContainer/Max").text = str(t.maxValue)
-	l.get_node("Config/VBoxContainer/Min").text = str(t.minValue)
+	l.get_node("Config/VBoxContainer/Max").text = str(t.max_value)
+	l.get_node("Config/VBoxContainer/Min").text = str(t.min_value)
 	l.get_node("Config/VBoxContainer/Slett").connect("pressed", self, "remove_trend", [t, l])
 	l.get_child(0).get_child(1).text = data_point.type
 	$PanelContainer2/VBC/HSplitContainer/Trend/TrendLines.add_child(t)
@@ -67,10 +67,10 @@ func add_trend(data_point: Node) -> void:
 
 
 func random_color() -> Color:
-	var r = rand_range(0.0, 1.0)
-	var g = rand_range(0.0, 1.0)
-	var b = rand_range(0.0, 1.0)
-	var c = Color(r, g, b)
+	var r: float = rand_range(0.0, 1.0)
+	var g: float = rand_range(0.0, 1.0)
+	var b: float = rand_range(0.0, 1.0)
+	var c: Color = Color(r, g, b)
 	
 	return c
 
@@ -87,7 +87,7 @@ func _on_Bakgrunn_color_changed(c) -> void:
 func _on_Button_pressed() -> void:
 	if not $PanelContainer.visible:
 		for tag in get_tree().get_nodes_in_group("Trend"):
-			var a = Button.new()
+			var a: Button = Button.new()
 			a.text = tag.type
 			a.connect("pressed", self, "add_trend", [tag])
 			$PanelContainer/VBoxContainer/VBoxContainer.add_child(a)
@@ -143,3 +143,7 @@ func _input(event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	if move:
 		global_position = get_global_mouse_position() - m_pos
+
+
+func _on_Exit_pressed():
+	queue_free()
