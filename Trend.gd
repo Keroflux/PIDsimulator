@@ -19,9 +19,11 @@ func _ready() -> void:
 		var l: Node = trend_label.instance()
 		t.color = trend_color[i]
 		connect("time_changed", t, "change_time_scale")
+		l.get_node("Config/VBoxContainer/CheckBox").connect("toggled", t, "set_auto_scale_y")
 #		t.default_color = trend_color[i]
 		t.data_source = trends[i]
 		t.timer = $Timer
+		t.trend_label = l
 		l.data_source = trends[i]
 		l.get_child(0).get_child(0).color = trend_color[i]
 		l.get_child(0).get_child(0).connect("color_changed", t, "change_color")
@@ -48,8 +50,10 @@ func add_trend(data_point: Node) -> void:
 	t.data_source = data_point
 	t.color = random_color()
 	connect("time_changed", t, "change_time_scale")
+	l.get_node("Config/VBoxContainer/CheckBox").connect("toggled", t, "set_auto_scale_y")
 #	t.default_color = random_color()
 	t.timer = $Timer
+	t.trend_label = l
 	t.change_time_scale(time_scale)
 	l.data_source = data_point
 	l.get_child(0).get_child(0).color = t.color

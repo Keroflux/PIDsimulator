@@ -19,4 +19,3 @@ func _on_Button_pressed() -> void:
 
 func _on_Lukk_pressed() -> void:
 	$Config.hide()
-

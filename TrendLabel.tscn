@@ -60,7 +60,7 @@ margin_bottom = 153.0
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 112.0
-margin_bottom = 143.0
+margin_bottom = 171.0
 
 [node name="Label" type="Label" parent="Config/VBoxContainer"]
 margin_right = 105.0
@@ -87,16 +87,22 @@ margin_bottom = 88.0
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="Slett" type="Button" parent="Config/VBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="Config/VBoxContainer"]
 margin_top = 92.0
 margin_right = 105.0
-margin_bottom = 112.0
+margin_bottom = 116.0
+text = " Auto scale"
+
+[node name="Slett" type="Button" parent="Config/VBoxContainer"]
+margin_top = 120.0
+margin_right = 105.0
+margin_bottom = 140.0
 text = "Slett"
 
 [node name="Lukk" type="Button" parent="Config/VBoxContainer"]
-margin_top = 116.0
+margin_top = 144.0
 margin_right = 105.0
-margin_bottom = 136.0
+margin_bottom = 164.0
 text = "Lukk"
 
 [connection signal="pressed" from="." to="." method="_on_Button_pressed"]
