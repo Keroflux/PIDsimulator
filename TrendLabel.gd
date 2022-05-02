@@ -15,6 +15,8 @@ func _process(_delta: float) -> void:
 
 func _on_Button_pressed() -> void:
 	$Config.show()
+	$Config.rect_global_position = rect_global_position
+	$Config.rect_global_position.x += rect_size.x + 10
 
 
 func _on_Lukk_pressed() -> void:
