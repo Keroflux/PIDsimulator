@@ -13,4 +13,4 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	avvik.prosess_verdi = prosess_verdi
 	trend = prosess_verdi
-	text = str(stepify(prosess_verdi, 0.01))
+	text = str(snapped(prosess_verdi, 0.01))

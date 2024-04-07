@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 			utgangsverdi = clamp(utgangsverdi, 0, 100)
 	
 	trend = utgangsverdi
-	text = str(stepify(utgangsverdi, 0.01))
+	text = str(snapped(utgangsverdi, 0.01))
 
 
 func _on_Ti_text_entered(new_text: String) -> void:

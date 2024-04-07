@@ -10,7 +10,7 @@ var trend: float = 0.0
 func _physics_process(_delta: float) -> void:
 	utgangsverdi = avvik * Kp
 	trend = utgangsverdi
-	text = str(stepify(utgangsverdi, 0.01))
+	text = str(snapped(utgangsverdi, 0.01))
 
 
 func _on_Kp_text_entered(new_text: String) -> void:

@@ -19,18 +19,20 @@ var random: bool = false
 var prosessverdi: Node
 var trend : float = 0.0
 var type: String = "Flow"
+var tw: Tween
 
 
 func _ready() -> void:
 	randomize()
 	prosessverdi = get_node("Blokkdiagram/ProsessVerdi")
 	random_flow()
+	#tw = get_tree().create_tween()
 
 
 func _physics_process(delta: float) -> void:
 	time += delta
-	if Engine.get_frames_drawn() % Engine.iterations_per_second / noise_hz == 0:
-		current_noise = rand_range(level_noise, -level_noise)
+	if Engine.get_frames_drawn() % Engine.physics_ticks_per_second / noise_hz == 0:
+		current_noise = randf_range(level_noise, -level_noise)
 	
 	innhold += (inflow + flow_var - outflow ) * delta / 3600
 	level = (innhold / volum * 100) + current_noise
@@ -40,11 +42,12 @@ func _physics_process(delta: float) -> void:
 
 func random_flow() -> void:
 	old_flow_variation = flow_variation
-	flow_var_time = rand_range(0, flow_var_max_time)
-	flow_variation = rand_range(-inflow * flow_var_max, inflow * flow_var_max)
+	flow_var_time = randf_range(0, flow_var_max_time)
+	flow_variation = randf_range(-inflow * flow_var_max, inflow * flow_var_max)
 	if flow_var_max > 0:
-		$Tween.interpolate_property(self, "flow_var", old_flow_variation, flow_variation, flow_var_time,Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-		$Tween.start()
+		tw = create_tween()
+		tw.connect("finished", _tw_complete)
+		tw.tween_property(self, "flow_var", flow_variation, flow_var_time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 
 func _on_InnFlow_text_entered(new_text: String) -> void:
@@ -67,7 +70,7 @@ func _on_FlowVariasjon_text_entered(new_text: String) -> void:
 	flow_var_max = float(new_text) / float(100.0)
 	flow_var = 0.0
 	flow_variation = 0.0
-	$Tween.stop_all()
+	#tw.stop()
 	if flow_var_max > 0:
 		random_flow()
 
@@ -77,11 +80,11 @@ func _on_FlowVariasjonTid_text_entered(new_text: String) -> void:
 	random_flow()
 
 
-func _on_Tween_tween_all_completed() -> void:
+func _tw_complete() -> void:
 	random_flow()
 
 
 func _on_NyTrend_pressed():
 	var a = load("res://Trend.tscn")
-	a = a.instance()
+	a = a.instantiate()
 	add_child(a)

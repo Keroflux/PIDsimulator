@@ -1,665 +1,673 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=12 format=3 uid="uid://oln18nf04ijm"]
 
-[ext_resource path="res://Roboto-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Avvik.gd" type="Script" id=2]
-[ext_resource path="res://ProsessVerdi.gd" type="Script" id=3]
-[ext_resource path="res://Setpunkt.gd" type="Script" id=4]
-[ext_resource path="res://Proporsjonal.gd" type="Script" id=5]
-[ext_resource path="res://Integral.gd" type="Script" id=6]
-[ext_resource path="res://Derivat.gd" type="Script" id=7]
-[ext_resource path="res://Pådrag.gd" type="Script" id=8]
-[ext_resource path="res://PIDsim.gd" type="Script" id=9]
-[ext_resource path="res://Ventil.gd" type="Script" id=11]
-[ext_resource path="res://Trend.tscn" type="PackedScene" id=12]
+[ext_resource type="Script" path="res://Avvik.gd" id="2"]
+[ext_resource type="Script" path="res://ProsessVerdi.gd" id="3"]
+[ext_resource type="Script" path="res://Setpunkt.gd" id="4"]
+[ext_resource type="Script" path="res://Proporsjonal.gd" id="5"]
+[ext_resource type="Script" path="res://Integral.gd" id="6"]
+[ext_resource type="Script" path="res://Derivat.gd" id="7"]
+[ext_resource type="Script" path="res://Pådrag.gd" id="8"]
+[ext_resource type="Script" path="res://PIDsim.gd" id="9"]
+[ext_resource type="Script" path="res://Ventil.gd" id="11"]
+[ext_resource type="PackedScene" uid="uid://cnv2eytevp8ou" path="res://Trend.tscn" id="12"]
 
-[sub_resource type="DynamicFont" id=2]
-size = 36
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+[sub_resource type="StyleBoxFlat" id="3"]
+bg_color = Color(0.188235, 0.188235, 0.188235, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 
-[sub_resource type="DynamicFont" id=4]
-size = 18
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=5]
-size = 38
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=7]
-size = 36
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 24
-font_data = ExtResource( 1 )
-
 [node name="PIDsim" type="Node2D" groups=["Trend"]]
-script = ExtResource( 9 )
+script = ExtResource("9")
 
 [node name="Blokkdiagram" type="Node2D" parent="."]
-position = Vector2( 664, 360 )
+position = Vector2(520, 256)
 
 [node name="ProsessVerdi" type="Label" parent="Blokkdiagram" groups=["Trend"]]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -296.0
-margin_top = -168.0
-margin_right = -184.0
-margin_bottom = -120.0
-custom_fonts/font = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+offset_left = -270.0
+offset_top = -158.0
+offset_right = -210.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("3")
 text = "65"
-valign = 1
-script = ExtResource( 3 )
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3")
+metadata/_edit_use_anchors_ = true
 
 [node name="Pil" type="Line2D" parent="Blokkdiagram/ProsessVerdi"]
-position = Vector2( 80, 16 )
+position = Vector2(56, 6)
 rotation = 1.5708
-points = PoolVector2Array( 32, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+points = PackedVector2Array(24.0001, 23.9999, 128, 24, 124, 21, 124, 27, 128, 24)
 width = 2.0
-default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 
 [node name="Label" type="Label" parent="Blokkdiagram/ProsessVerdi"]
-margin_top = -24.0
-margin_right = 107.0
-margin_bottom = -2.0
-custom_fonts/font = SubResource( 4 )
-text = "Prosess verdi"
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.333333
+anchor_top = 0.0666667
+anchor_right = 0.333333
+anchor_bottom = 0.1
+offset_top = -24.0
+offset_right = 107.0
+offset_bottom = -2.0
+text = "PV"
+metadata/_edit_use_anchors_ = true
 
 [node name="Avvik" type="Label" parent="Blokkdiagram" groups=["Trend"]]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -296.0
-margin_top = -24.0
-margin_right = -184.0
-margin_bottom = 24.0
-custom_fonts/font = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+offset_left = -268.0
+offset_top = -24.0
+offset_right = -208.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("3")
 text = "65"
-valign = 1
-script = ExtResource( 2 )
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2")
+metadata/_edit_use_anchors_ = true
 
 [node name="Pil" type="Line2D" parent="Blokkdiagram/Avvik"]
-position = Vector2( 120, 0 )
-points = PoolVector2Array( -8, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+position = Vector2(68, -10)
+points = PackedVector2Array(-8, 24, 86, 24, 80, 26, 80, 22, 86, 24)
 width = 2.0
-default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 
 [node name="Pil2" type="Line2D" parent="Blokkdiagram/Avvik"]
-position = Vector2( 120, -32 )
-points = PoolVector2Array( 64, 56, 64, -31, 67, -27, 61, -27, 64, -31 )
+position = Vector2(25.0001, -41)
+points = PackedVector2Array(64, 56, 64, -31, 67, -27, 61, -27, 64, -31)
 width = 2.0
-default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 
 [node name="Pil" type="Line2D" parent="Blokkdiagram/Avvik/Pil2"]
-position = Vector2( 0, -56 )
-points = PoolVector2Array( 64, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+position = Vector2(0, -56)
+points = PackedVector2Array(64, 24, 128, 24, 124, 21, 124, 27, 128, 24)
 width = 2.0
-default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 
 [node name="Pil3" type="Line2D" parent="Blokkdiagram/Avvik"]
-position = Vector2( 248, 80 )
+position = Vector2(153, 71)
 rotation = -3.14159
-points = PoolVector2Array( 64, 56, 64, -31, 67, -27, 61, -27, 64, -31 )
+points = PackedVector2Array(64, 56, 64, -31, 67, -27, 61, -27, 64, -31)
 width = 2.0
-default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 
 [node name="Pil" type="Line2D" parent="Blokkdiagram/Avvik/Pil3"]
-position = Vector2( 128, -8 )
+position = Vector2(128, -8)
 rotation = -3.14159
-points = PoolVector2Array( 64, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+points = PackedVector2Array(64, 24, 128, 24, 124, 21, 124, 27, 128, 24)
 width = 2.0
-default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 
 [node name="Label" type="Label" parent="Blokkdiagram/Avvik"]
-margin_top = -24.0
-margin_right = 43.0
-margin_bottom = -2.0
-custom_fonts/font = SubResource( 4 )
-text = "Avvik"
+layout_mode = 0
+offset_left = 8.0
+offset_top = 28.0
+offset_right = 51.0
+offset_bottom = 51.0
+text = "Error"
+metadata/_edit_use_anchors_ = true
 
 [node name="Minus" type="Label" parent="Blokkdiagram/Avvik"]
-margin_left = -17.0
-margin_top = -11.0
-margin_right = -7.0
-margin_bottom = 35.0
-custom_fonts/font = SubResource( 5 )
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0666667
+anchor_top = -1.6
+anchor_right = 0.0666667
+anchor_bottom = -1.46667
+offset_left = 14.0
+offset_top = -20.0
+offset_right = 24.0
+offset_bottom = -1.0
 text = "-"
+metadata/_edit_use_anchors_ = true
 
 [node name="Setpunkt" type="LineEdit" parent="Blokkdiagram" groups=["Trend"]]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -472.0
-margin_top = -24.0
-margin_right = -360.0
-margin_bottom = 24.0
-custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
-custom_fonts/font = SubResource( 7 )
-custom_styles/normal = SubResource( 3 )
+offset_left = -340.0
+offset_top = -84.0
+offset_right = -276.937
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
+theme_override_styles/normal = SubResource("3")
 text = "65"
-align = 1
-script = ExtResource( 4 )
+alignment = 1
+script = ExtResource("4")
+metadata/_edit_use_anchors_ = true
 
 [node name="Pil" type="Line2D" parent="Blokkdiagram/Setpunkt"]
-position = Vector2( 144, -40 )
+position = Vector2(64, -48)
 rotation = 1.5708
-points = PoolVector2Array( 64, 32, 64, -31, 67, -27, 61, -27, 64, -31 )
+points = PackedVector2Array(64, 1.99977, 63.9999, -36.0002, 65.9999, -30.0002, 61.9999, -30.0002, 63.9999, -36.0002)
 width = 2.0
-default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 
 [node name="Label" type="Label" parent="Blokkdiagram/Setpunkt"]
-margin_top = 48.0
-margin_right = 107.0
-margin_bottom = 70.0
-custom_fonts/font = SubResource( 4 )
-text = "Setpunkt"
-align = 1
-valign = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.317143
+anchor_top = -0.067
+anchor_right = 0.317143
+anchor_bottom = -0.067
+offset_top = -21.99
+offset_right = 30.0
+offset_bottom = 1.01
+text = "SP"
+metadata/_edit_use_anchors_ = true
 
 [node name="Proporsjonal" type="Label" parent="Blokkdiagram" groups=["Trend"]]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -48.0
-margin_top = -112.0
-margin_right = 80.0
-margin_bottom = -64.0
-custom_fonts/font = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+offset_left = -114.0
+offset_top = -112.0
+offset_right = -50.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("3")
 text = "65"
-valign = 1
-script = ExtResource( 5 )
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5")
+metadata/_edit_use_anchors_ = true
 
 [node name="Pil" type="Line2D" parent="Blokkdiagram/Proporsjonal"]
-position = Vector2( 64, 0 )
-rotation = 6.3573e-08
-points = PoolVector2Array( 64, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+position = Vector2(0, -8)
+points = PackedVector2Array(64, 24, 64, 24, 128, 24, 124, 21, 124, 27, 128, 24)
 width = 2.0
-default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 
 [node name="Pil5" type="Line2D" parent="Blokkdiagram/Proporsjonal/Pil"]
-position = Vector2( 192, 80 )
+position = Vector2(192, 80)
 rotation = 3.14159
-points = PoolVector2Array( 64, 56, 64, -31, 67, -27, 61, -27, 64, -31 )
+points = PackedVector2Array(64, 56, 64, -31, 67, -27, 61, -27, 64, -31)
 width = 2.0
-default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 
 [node name="Label" type="Label" parent="Blokkdiagram/Proporsjonal"]
-margin_left = 8.0
-margin_top = -24.0
-margin_right = 115.0
-margin_bottom = -2.0
-custom_fonts/font = SubResource( 4 )
-text = "Proporsjonal
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.40625
+anchor_top = 0.0666667
+anchor_right = 0.40625
+anchor_bottom = 0.0666667
+offset_top = -24.0
+offset_right = 22.0
+offset_bottom = -1.0
+text = "P
 "
-align = 1
-valign = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Integral" type="Label" parent="Blokkdiagram" groups=["Trend"]]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -48.0
-margin_top = -24.0
-margin_right = 80.0
-margin_bottom = 24.0
-custom_fonts/font = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+offset_left = -114.0
+offset_top = -26.0
+offset_right = -50.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("3")
 text = "65"
-valign = 1
-script = ExtResource( 6 )
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6")
+metadata/_edit_use_anchors_ = true
 
 [node name="Pil" type="Line2D" parent="Blokkdiagram/Integral"]
-position = Vector2( 128, 0 )
-rotation = 6.3573e-08
-points = PoolVector2Array( 0, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+position = Vector2(128, -6)
+points = PackedVector2Array(0, 24, -64, 24, 60, 24, 56, 22, 56, 26, 60, 24)
 width = 2.0
-default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 
 [node name="Label" type="Label" parent="Blokkdiagram/Integral"]
-margin_left = 8.0
-margin_top = -24.0
-margin_right = 115.0
-margin_bottom = -2.0
-custom_fonts/font = SubResource( 4 )
-text = "Integral"
-align = 1
-valign = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.40625
+anchor_right = 0.40625
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -1.0
+text = "I"
+metadata/_edit_use_anchors_ = true
 
 [node name="Derivat" type="Label" parent="Blokkdiagram" groups=["Trend"]]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -48.0
-margin_top = 64.0
-margin_right = 80.0
-margin_bottom = 112.0
-custom_fonts/font = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+offset_left = -114.0
+offset_top = 62.0
+offset_right = -50.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("3")
 text = "65"
-valign = 1
-script = ExtResource( 7 )
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7")
+metadata/_edit_use_anchors_ = true
 
 [node name="Pil" type="Line2D" parent="Blokkdiagram/Derivat"]
-position = Vector2( 64, 0 )
-rotation = 6.3573e-08
-points = PoolVector2Array( 64, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+position = Vector2(0, -8)
+points = PackedVector2Array(64, 24, 128, 24, 124, 21, 124, 27, 128, 24)
 width = 2.0
-default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 
 [node name="Pil5" type="Line2D" parent="Blokkdiagram/Derivat/Pil"]
-position = Vector2( 63.9999, -32 )
-rotation = -6.3573e-08
-points = PoolVector2Array( 64, 56, 64, -31, 67, -27, 61, -27, 64, -31 )
+position = Vector2(63.9999, -32)
+points = PackedVector2Array(64, 56, 64, -31, 67, -27, 61, -27, 64, -31)
 width = 2.0
-default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 
 [node name="Label" type="Label" parent="Blokkdiagram/Derivat"]
-margin_left = 8.0
-margin_top = -24.0
-margin_right = 115.0
-margin_bottom = -2.0
-custom_fonts/font = SubResource( 4 )
-text = "Derivat"
-align = 1
-valign = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.40625
+anchor_top = 0.0666667
+anchor_right = 0.40625
+anchor_bottom = 0.0666667
+offset_top = -24.0
+offset_right = 19.0
+offset_bottom = -1.0
+text = "D"
+metadata/_edit_use_anchors_ = true
 
 [node name="Pådrag" type="Label" parent="Blokkdiagram" groups=["Trend"]]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 208.0
-margin_top = -24.0
-margin_right = 336.0
-margin_bottom = 24.0
-custom_fonts/font = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+offset_left = 74.0
+offset_top = -22.0
+offset_right = 134.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("3")
 text = "65"
-valign = 1
-script = ExtResource( 8 )
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8")
+metadata/_edit_use_anchors_ = true
 
 [node name="Pil" type="Line2D" parent="Blokkdiagram/Pådrag"]
-position = Vector2( 64, 0 )
-points = PoolVector2Array( 65, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+position = Vector2(-6, -8)
+points = PackedVector2Array(65, 24, 128, 24, 124, 21, 124, 27, 128, 24)
 width = 2.0
-default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 
 [node name="Pluss" type="Label" parent="Blokkdiagram/Pådrag"]
-margin_left = -84.0
-margin_top = -2.0
-margin_right = -68.0
-margin_bottom = 27.0
-custom_fonts/font = SubResource( 6 )
+layout_mode = 0
+offset_left = -54.0
+offset_top = -6.0
+offset_right = -42.0
+offset_bottom = 17.0
 text = "+"
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Blokkdiagram/Pådrag"]
-margin_left = 8.0
-margin_top = -48.0
-margin_right = 115.0
-margin_bottom = -1.0
-custom_fonts/font = SubResource( 4 )
+layout_mode = 0
+offset_left = -20.0
+offset_top = 26.0
+offset_right = 87.0
+offset_bottom = 75.0
 text = "Utgangsverdi
 (Pådrag)"
-align = 1
-valign = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Ventil" type="Label" parent="Blokkdiagram" groups=["Trend"]]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 400.0
-margin_top = -24.0
-margin_right = 528.0
-margin_bottom = 24.0
-custom_fonts/font = SubResource( 2 )
-custom_styles/normal = SubResource( 3 )
+offset_left = 196.0
+offset_top = -22.0
+offset_right = 256.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("3")
 text = "65"
-valign = 1
-script = ExtResource( 11 )
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("11")
+metadata/_edit_use_anchors_ = true
 
 [node name="Pil" type="Line2D" parent="Blokkdiagram/Ventil"]
-position = Vector2( 64, 0 )
-points = PoolVector2Array( 64, 24, 128, 24, 124, 21, 124, 27, 128, 24 )
+position = Vector2(-4, -8)
+points = PackedVector2Array(64, 24, 128, 24, 124, 21, 124, 27, 128, 24)
 width = 2.0
-default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 
 [node name="Pil2" type="Line2D" parent="Blokkdiagram/Ventil"]
-position = Vector2( -456, -96 )
+position = Vector2(-456, -96)
 rotation = 3.14159
-points = PoolVector2Array( -624, -120, -624, 24.0001, 128, 24, 124, 21, 124, 27, 128, 24 )
+points = PackedVector2Array(-554, -112.001, -554, 23.9986, -50.0001, 23.9999, -56.0001, 21.9999, -56.0001, 25.9999, -50.0001, 23.9999)
 width = 2.0
-default_color = Color( 1, 1, 1, 1 )
 joint_mode = 2
 
 [node name="Label" type="Label" parent="Blokkdiagram/Ventil"]
-margin_left = 8.0
-margin_top = -40.0
-margin_right = 128.0
-margin_bottom = 7.0
-custom_fonts/font = SubResource( 4 )
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0833333
+anchor_top = -0.166667
+anchor_right = -0.0833333
+anchor_bottom = -0.133333
+offset_left = -24.0
+offset_top = -20.0
+offset_right = 96.0
+offset_bottom = 2.0
 text = "Ventilpossisjon"
-align = 1
-valign = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Kp" type="LineEdit" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 440.0
-margin_top = 8.0
-margin_right = 552.0
-margin_bottom = 56.0
-custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
-custom_fonts/font = SubResource( 7 )
-custom_styles/normal = SubResource( 3 )
+offset_left = 280.0
+offset_top = 8.0
+offset_right = 345.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
+theme_override_styles/normal = SubResource("3")
 text = "10"
-align = 1
+alignment = 1
 
 [node name="Label" type="Label" parent="Kp"]
-margin_left = -8.0
-margin_top = 48.0
-margin_right = 128.0
-margin_bottom = 70.0
-custom_fonts/font = SubResource( 4 )
-text = "P forsterkning Kp"
-align = 1
-valign = 1
+layout_mode = 0
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 72.0
+offset_bottom = 55.0
+text = "Kp"
 
 [node name="Ti" type="LineEdit" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 600.0
-margin_top = 8.0
-margin_right = 712.0
-margin_bottom = 56.0
-custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
-custom_fonts/font = SubResource( 7 )
-custom_styles/normal = SubResource( 3 )
+offset_left = 360.0
+offset_top = 8.0
+offset_right = 425.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
+theme_override_styles/normal = SubResource("3")
 text = "50"
-align = 1
+alignment = 1
 
 [node name="Label" type="Label" parent="Ti"]
-margin_left = -8.0
-margin_top = 48.0
-margin_right = 128.0
-margin_bottom = 70.0
-custom_fonts/font = SubResource( 4 )
-text = "Integral tid Ti"
-align = 1
-valign = 1
+layout_mode = 0
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 56.0
+offset_bottom = 55.0
+text = "Ti"
 
 [node name="Td" type="LineEdit" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 760.0
-margin_top = 8.0
-margin_right = 872.0
-margin_bottom = 56.0
-custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
-custom_fonts/font = SubResource( 7 )
-custom_styles/normal = SubResource( 3 )
+offset_left = 440.0
+offset_top = 8.0
+offset_right = 505.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
+theme_override_styles/normal = SubResource("3")
 text = "0"
-align = 1
+alignment = 1
 
 [node name="Label" type="Label" parent="Td"]
-margin_left = -8.0
-margin_top = 48.0
-margin_right = 128.0
-margin_bottom = 70.0
-custom_fonts/font = SubResource( 4 )
-text = "Derivat tid Td"
-align = 1
-valign = 1
+layout_mode = 0
+offset_left = 17.5313
+offset_top = 32.0
+offset_right = 49.5313
+offset_bottom = 55.0
+text = "Td"
 
 [node name="InnFlow" type="LineEdit" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = 272.0
-margin_right = 128.0
-margin_bottom = 320.0
-custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
-custom_fonts/font = SubResource( 7 )
-custom_styles/normal = SubResource( 3 )
+offset_left = 8.0
+offset_top = 208.0
+offset_right = 73.0
+offset_bottom = 238.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
+theme_override_styles/normal = SubResource("3")
 text = "300"
-align = 1
+alignment = 1
 
 [node name="Label" type="Label" parent="InnFlow"]
-margin_left = -16.0
-margin_top = 48.0
-margin_right = 120.0
-margin_bottom = 70.0
-custom_fonts/font = SubResource( 4 )
+layout_mode = 0
+offset_top = 32.0
+offset_right = 136.0
+offset_bottom = 55.0
 text = "Flow inn m3/t"
-align = 1
-valign = 1
 
 [node name="FlowVariasjon" type="LineEdit" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = 360.0
-margin_right = 128.0
-margin_bottom = 408.0
-custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
-custom_fonts/font = SubResource( 7 )
-custom_styles/normal = SubResource( 3 )
+offset_left = 8.0
+offset_top = 280.0
+offset_right = 73.0
+offset_bottom = 310.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
+theme_override_styles/normal = SubResource("3")
 text = "0"
-align = 1
+alignment = 1
 
 [node name="Label" type="Label" parent="FlowVariasjon"]
-margin_left = -8.0
-margin_top = 48.0
-margin_right = 148.0
-margin_bottom = 70.0
-custom_fonts/font = SubResource( 4 )
-text = "Maks % varisjon i flow"
-align = 1
-valign = 1
+layout_mode = 0
+offset_top = 32.0
+offset_right = 171.0
+offset_bottom = 55.0
+text = "% flowvariasjon"
 
 [node name="FlowVariasjonTid" type="LineEdit" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = 448.0
-margin_right = 128.0
-margin_bottom = 496.0
-custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
-custom_fonts/font = SubResource( 7 )
-custom_styles/normal = SubResource( 3 )
+offset_left = 8.0
+offset_top = 344.0
+offset_right = 73.0
+offset_bottom = 374.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
+theme_override_styles/normal = SubResource("3")
 text = "60"
-align = 1
+alignment = 1
 
 [node name="Label" type="Label" parent="FlowVariasjonTid"]
-margin_left = -16.0
-margin_top = 48.0
-margin_right = 140.0
-margin_bottom = 95.0
-custom_fonts/font = SubResource( 4 )
-text = "Flow variasjon 
-maks periode (sek)"
-align = 1
-valign = 1
+layout_mode = 0
+offset_top = 32.0
+offset_right = 156.0
+offset_bottom = 81.0
+text = "Flowvariasjon 
+periode (sek)"
 
 [node name="TankSize" type="LineEdit" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = 184.0
-margin_right = 128.0
-margin_bottom = 232.0
-custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
-custom_fonts/font = SubResource( 7 )
-custom_styles/normal = SubResource( 3 )
+offset_left = 8.0
+offset_top = 144.0
+offset_right = 73.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
+theme_override_styles/normal = SubResource("3")
 text = "10"
-align = 1
+alignment = 1
 
 [node name="Label" type="Label" parent="TankSize"]
-margin_top = 48.0
-margin_right = 144.0
-margin_bottom = 70.0
-custom_fonts/font = SubResource( 4 )
-text = "Tank størrelse m3"
-align = 1
-valign = 1
+layout_mode = 0
+offset_top = 32.0
+offset_right = 144.0
+offset_bottom = 55.0
+text = "Tank m3"
 
 [node name="VentilSize" type="LineEdit" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1280.0
-margin_top = 288.0
-margin_right = 1392.0
-margin_bottom = 336.0
-custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
-custom_fonts/font = SubResource( 7 )
-custom_styles/normal = SubResource( 3 )
+offset_left = 8.0
+offset_top = 442.0
+offset_right = 73.0
+offset_bottom = 472.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
+theme_override_styles/normal = SubResource("3")
 text = "1200"
-align = 1
 
 [node name="Label" type="Label" parent="VentilSize"]
-margin_left = -16.0
-margin_top = 48.0
-margin_right = 128.0
-margin_bottom = 70.0
-custom_fonts/font = SubResource( 4 )
+layout_mode = 0
+offset_top = 32.0
+offset_right = 144.0
+offset_bottom = 55.0
 text = "Ventil Cv m3/t"
-align = 1
-valign = 1
 
 [node name="VentilHastighet" type="LineEdit" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1280.0
-margin_top = 384.0
-margin_right = 1392.0
-margin_bottom = 432.0
-custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
-custom_fonts/font = SubResource( 7 )
-custom_styles/normal = SubResource( 3 )
+offset_left = 8.0
+offset_top = 506.0
+offset_right = 73.0
+offset_bottom = 536.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
+theme_override_styles/normal = SubResource("3")
 text = "5.0"
-align = 1
 
 [node name="Label" type="Label" parent="VentilHastighet"]
-margin_left = -40.0
-margin_top = 48.0
-margin_right = 117.0
-margin_bottom = 70.0
-custom_fonts/font = SubResource( 4 )
+layout_mode = 0
+offset_top = 32.0
+offset_right = 157.0
+offset_bottom = 55.0
 text = "Ventil hastighet %/s"
-align = 1
-valign = 1
 
 [node name="VentilDødbånd" type="LineEdit" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1280.0
-margin_top = 480.0
-margin_right = 1392.0
-margin_bottom = 528.0
-custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
-custom_fonts/font = SubResource( 7 )
-custom_styles/normal = SubResource( 3 )
+offset_left = 8.0
+offset_top = 568.0
+offset_right = 73.0
+offset_bottom = 598.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
+theme_override_styles/normal = SubResource("3")
 text = "0.2"
-align = 1
 
 [node name="Label" type="Label" parent="VentilDødbånd"]
-margin_left = -40.0
-margin_top = 48.0
-margin_right = 117.0
-margin_bottom = 70.0
-custom_fonts/font = SubResource( 4 )
+layout_mode = 0
+offset_top = 32.0
+offset_right = 157.0
+offset_bottom = 55.0
 text = "Ventil dødbånd %"
-align = 1
-valign = 1
 
 [node name="Målestøy" type="LineEdit" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = 8.0
-margin_right = 128.0
-margin_bottom = 56.0
-custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
-custom_fonts/font = SubResource( 7 )
-custom_styles/normal = SubResource( 3 )
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 73.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
+theme_override_styles/normal = SubResource("3")
 text = "0.0"
-align = 1
+alignment = 1
 
 [node name="Label" type="Label" parent="Målestøy"]
-margin_left = -16.0
-margin_top = 48.0
-margin_right = 128.0
-margin_bottom = 70.0
-custom_fonts/font = SubResource( 4 )
+layout_mode = 0
+offset_top = 32.0
+offset_right = 144.0
+offset_bottom = 55.0
 text = "Målestøy %"
-align = 1
-valign = 1
 
 [node name="MålestøyHZ" type="LineEdit" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 144.0
-margin_top = 8.0
-margin_right = 256.0
-margin_bottom = 56.0
-custom_colors/font_color = Color( 0, 0.513726, 1, 1 )
-custom_fonts/font = SubResource( 7 )
-custom_styles/normal = SubResource( 3 )
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 73.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
+theme_override_styles/normal = SubResource("3")
 text = "10"
-align = 1
+alignment = 1
 
 [node name="Label" type="Label" parent="MålestøyHZ"]
-margin_left = -16.0
-margin_top = 48.0
-margin_right = 128.0
-margin_bottom = 70.0
-custom_fonts/font = SubResource( 4 )
+layout_mode = 0
+offset_top = 32.0
+offset_right = 144.0
+offset_bottom = 55.0
 text = "Målestøy Hz"
-align = 1
-valign = 1
 
-[node name="Trend" parent="." instance=ExtResource( 12 )]
-position = Vector2( 296, 525 )
-
-[node name="Tween" type="Tween" parent="."]
+[node name="Trend" parent="." instance=ExtResource("12")]
+position = Vector2(168, 392)
 
 [node name="NyTrend" type="Button" parent="."]
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 896.0
-margin_top = 8.0
-margin_right = 1008.0
-margin_bottom = 56.0
+offset_left = 648.0
+offset_top = 8.0
+offset_right = 780.0
+offset_bottom = 56.0
+grow_vertical = 0
 text = "Nytt trendvindu"
 
-[connection signal="text_entered" from="Blokkdiagram/Setpunkt" to="Blokkdiagram/Setpunkt" method="_on_Setpunkt_text_entered"]
-[connection signal="text_entered" from="Kp" to="Blokkdiagram/Proporsjonal" method="_on_Kp_text_entered"]
-[connection signal="text_entered" from="Kp" to="Blokkdiagram/Integral" method="_on_Kp_text_entered"]
-[connection signal="text_entered" from="Kp" to="Blokkdiagram/Derivat" method="_on_Kp_text_entered"]
-[connection signal="text_entered" from="Ti" to="Blokkdiagram/Integral" method="_on_Ti_text_entered"]
-[connection signal="text_entered" from="Td" to="Blokkdiagram/Derivat" method="_on_Td_text_entered"]
-[connection signal="text_entered" from="InnFlow" to="." method="_on_InnFlow_text_entered"]
-[connection signal="text_entered" from="FlowVariasjon" to="." method="_on_FlowVariasjon_text_entered"]
-[connection signal="text_entered" from="FlowVariasjonTid" to="." method="_on_FlowVariasjonTid_text_entered"]
-[connection signal="text_entered" from="TankSize" to="." method="_on_TankSize_text_entered"]
-[connection signal="text_entered" from="VentilSize" to="Blokkdiagram/Ventil" method="_on_VentilSize_text_entered"]
-[connection signal="text_entered" from="VentilHastighet" to="Blokkdiagram/Ventil" method="_on_VentilHastighet_text_entered"]
-[connection signal="text_entered" from="VentilDødbånd" to="Blokkdiagram/Ventil" method="_on_VentilDdbnd_text_entered"]
-[connection signal="text_entered" from="Målestøy" to="." method="_on_Mlesty_text_entered"]
-[connection signal="text_entered" from="MålestøyHZ" to="." method="_on_MlestyHZ_text_entered"]
-[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
+[connection signal="text_submitted" from="Blokkdiagram/Setpunkt" to="Blokkdiagram/Setpunkt" method="_on_Setpunkt_text_entered"]
+[connection signal="text_submitted" from="Kp" to="Blokkdiagram/Proporsjonal" method="_on_Kp_text_entered"]
+[connection signal="text_submitted" from="Kp" to="Blokkdiagram/Integral" method="_on_Kp_text_entered"]
+[connection signal="text_submitted" from="Kp" to="Blokkdiagram/Derivat" method="_on_Kp_text_entered"]
+[connection signal="text_submitted" from="Ti" to="Blokkdiagram/Integral" method="_on_Ti_text_entered"]
+[connection signal="text_submitted" from="Td" to="Blokkdiagram/Derivat" method="_on_Td_text_entered"]
+[connection signal="text_submitted" from="InnFlow" to="." method="_on_InnFlow_text_entered"]
+[connection signal="text_submitted" from="FlowVariasjon" to="." method="_on_FlowVariasjon_text_entered"]
+[connection signal="text_submitted" from="FlowVariasjonTid" to="." method="_on_FlowVariasjonTid_text_entered"]
+[connection signal="text_submitted" from="TankSize" to="." method="_on_TankSize_text_entered"]
+[connection signal="text_submitted" from="VentilSize" to="Blokkdiagram/Ventil" method="_on_VentilSize_text_entered"]
+[connection signal="text_submitted" from="VentilHastighet" to="Blokkdiagram/Ventil" method="_on_VentilHastighet_text_entered"]
+[connection signal="text_submitted" from="VentilDødbånd" to="Blokkdiagram/Ventil" method="_on_VentilDdbnd_text_entered"]
+[connection signal="text_submitted" from="Målestøy" to="." method="_on_Mlesty_text_entered"]
+[connection signal="text_submitted" from="MålestøyHZ" to="." method="_on_MlestyHZ_text_entered"]
 [connection signal="pressed" from="NyTrend" to="." method="_on_NyTrend_pressed"]

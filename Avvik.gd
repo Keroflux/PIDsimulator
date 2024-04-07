@@ -22,5 +22,5 @@ func _physics_process(_delta: float) -> void:
 	i.avvik = avvik
 	d.avvik = avvik
 	d.prosessverdi = prosess_verdi
-	text = str(stepify(avvik, 0.01))
+	text = str(snapped(avvik, 0.01))
 	

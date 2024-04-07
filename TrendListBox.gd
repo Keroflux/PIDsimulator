@@ -16,7 +16,7 @@ func _on_PanelContainer_mouse_exited() -> void:
 func _input(event: InputEvent) -> void:
 	if  mouse_inside:
 		if event.is_action_pressed("left_mouse"):
-			m_pos = get_global_mouse_position() - rect_global_position
+			m_pos = get_global_mouse_position() - global_position
 			move = true
 		if event.is_action_released("left_mouse"):
 			move = false
@@ -24,4 +24,4 @@ func _input(event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	if move:
-		rect_global_position = get_global_mouse_position() - m_pos
+		global_position = get_global_mouse_position() - m_pos

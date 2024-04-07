@@ -1,12 +1,12 @@
 extends Node2D
 signal time_changed
 
-onready var top_bar: Node = $PanelContainer2/VBC/TopBar 
+@onready var top_bar: Node = $PanelContainer2/VBC/TopBar 
 var trend_label: PackedScene = preload("res://TrendLabel.tscn")
 var trend_line: PackedScene = preload("res://TrendLine2.tscn")
 var trend_color: Array = [Color(1.0, 1.0, 1.0), Color(0.0, 0.0, 1.0), Color(1.0, 0.0, 0.0), Color(0.0, 1.0, 0.0), Color(0.0, 1.0, 1.0), Color(1.0, 1.0, 0.0), Color(1.0, 0.0, 1.0)]
-onready var trends: Array = [get_parent().get_node("Blokkdiagram/ProsessVerdi"), get_parent().get_node("Blokkdiagram/Setpunkt"), get_parent().get_node("Blokkdiagram/Pådrag"), get_parent().get_node("Blokkdiagram/Ventil")]
-onready var label_panel: Node = $PanelContainer2/VBC/HSplitContainer/PanelContainer/VSplitContainer/ScrollContainer/VBoxContainer
+@onready var trends: Array = [get_parent().get_node("Blokkdiagram/ProsessVerdi"), get_parent().get_node("Blokkdiagram/Setpunkt"), get_parent().get_node("Blokkdiagram/Pådrag"), get_parent().get_node("Blokkdiagram/Ventil")]
+@onready var label_panel: Node = $PanelContainer2/VBC/HSplitContainer/PanelContainer/VSplitContainer/ScrollContainer/VBoxContainer
 var mouse_inside: bool = false
 var m_pos: Vector2 = Vector2(0, 0)
 var move: bool = false
@@ -15,28 +15,28 @@ var time_scale: int = 60
 
 func _ready() -> void:
 	for i in trends.size():
-		var t: Node = trend_line.instance()
-		var l: Node = trend_label.instance()
+		var t: Node = trend_line.instantiate()
+		var l: Node = trend_label.instantiate()
 		t.color = trend_color[i]
-		connect("time_changed", t, "change_time_scale")
-		l.get_node("Config/VBoxContainer/CheckBox").connect("toggled", t, "set_auto_scale_y")
+		connect("time_changed", Callable(t, "change_time_scale"))
+		l.get_node("Config/VBoxContainer/CheckBox").connect("toggled", Callable(t, "set_auto_scale_y"))
 #		t.default_color = trend_color[i]
 		t.data_source = trends[i]
 		t.timer = $Timer
 		t.trend_label = l
 		l.data_source = trends[i]
 		l.get_child(0).get_child(0).color = trend_color[i]
-		l.get_child(0).get_child(0).connect("color_changed", t, "change_color")
-		l.get_node("Config/VBoxContainer/Max").connect("text_entered", t, "change_max")
-		l.get_node("Config/VBoxContainer/Min").connect("text_entered", t, "change_min")
+		l.get_child(0).get_child(0).connect("color_changed", Callable(t, "change_color"))
+		l.get_node("Config/VBoxContainer/Max").connect("text_submitted", Callable(t, "change_max"))
+		l.get_node("Config/VBoxContainer/Min").connect("text_submitted", Callable(t, "change_min"))
 		l.get_node("Config/VBoxContainer/Max").text = str(t.max_value)
 		l.get_node("Config/VBoxContainer/Min").text = str(t.min_value)
-		l.get_node("Config/VBoxContainer/Slett").connect("pressed", self, "remove_trend", [t, l])
+		l.get_node("Config/VBoxContainer/Slett").connect("pressed", Callable(self, "remove_trend").bind(t, l))
 		l.get_child(0).get_child(1).text = trends[i].type
 		
 		label_panel.add_child(l)
 		$PanelContainer2/VBC/HSplitContainer/Trend/TrendLines.add_child(t)
-		get_node("Timer").connect("timeout", t, "_on_Timer_timeout")
+		get_node("Timer").connect("timeout", Callable(t, "_on_Timer_timeout"))
 
 
 func _on_Timer_timeout() -> void:
@@ -45,12 +45,12 @@ func _on_Timer_timeout() -> void:
 
 
 func add_trend(data_point: Node) -> void:
-	var t: Node = trend_line.instance()
-	var l: Node = trend_label.instance()
+	var t: Node = trend_line.instantiate()
+	var l: Node = trend_label.instantiate()
 	t.data_source = data_point
 	t.color = random_color()
-	connect("time_changed", t, "change_time_scale")
-	l.get_node("Config/VBoxContainer/CheckBox").connect("toggled", t, "set_auto_scale_y")
+	connect("time_changed", Callable(t, "change_time_scale"))
+	l.get_node("Config/VBoxContainer/CheckBox").connect("toggled", Callable(t, "set_auto_scale_y"))
 #	t.default_color = random_color()
 	t.timer = $Timer
 	t.trend_label = l
@@ -58,22 +58,22 @@ func add_trend(data_point: Node) -> void:
 	l.data_source = data_point
 	l.get_child(0).get_child(0).color = t.color
 #	l.get_child(0).get_child(0).color = t.default_color
-	l.get_child(0).get_child(0).connect("color_changed", t, "change_color")
-	l.get_node("Config/VBoxContainer/Max").connect("text_entered", t, "change_max")
-	l.get_node("Config/VBoxContainer/Min").connect("text_entered", t, "change_min")
+	l.get_child(0).get_child(0).connect("color_changed", Callable(t, "change_color"))
+	l.get_node("Config/VBoxContainer/Max").connect("text_submitted", Callable(t, "change_max"))
+	l.get_node("Config/VBoxContainer/Min").connect("text_submitted", Callable(t, "change_min"))
 	l.get_node("Config/VBoxContainer/Max").text = str(t.max_value)
 	l.get_node("Config/VBoxContainer/Min").text = str(t.min_value)
-	l.get_node("Config/VBoxContainer/Slett").connect("pressed", self, "remove_trend", [t, l])
+	l.get_node("Config/VBoxContainer/Slett").connect("pressed", Callable(self, "remove_trend").bind(t, l))
 	l.get_child(0).get_child(1).text = data_point.type
 	$PanelContainer2/VBC/HSplitContainer/Trend/TrendLines.add_child(t)
 	label_panel.add_child(l)
-	get_node("Timer").connect("timeout", t, "_on_Timer_timeout")
+	get_node("Timer").connect("timeout", Callable(t, "_on_Timer_timeout"))
 
 
 func random_color() -> Color:
-	var r: float = rand_range(0.0, 1.0)
-	var g: float = rand_range(0.0, 1.0)
-	var b: float = rand_range(0.0, 1.0)
+	var r: float = randf_range(0.0, 1.0)
+	var g: float = randf_range(0.0, 1.0)
+	var b: float = randf_range(0.0, 1.0)
 	var c: Color = Color(r, g, b)
 	
 	return c
@@ -93,7 +93,7 @@ func _on_Button_pressed() -> void:
 		for tag in get_tree().get_nodes_in_group("Trend"):
 			var a: Button = Button.new()
 			a.text = tag.type
-			a.connect("pressed", self, "add_trend", [tag])
+			a.connect("pressed", Callable(self, "add_trend").bind(tag))
 			$PanelContainer/VBoxContainer/VBoxContainer.add_child(a)
 		$PanelContainer.show()
 

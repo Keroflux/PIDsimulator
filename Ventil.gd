@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	separator.outflow = flow
 	
 	trend = ventilpossisjon
-	text = str(stepify(ventilpossisjon, 0.01))
+	text = str(snapped(ventilpossisjon, 0.01))
 
 
 func _on_VentilSize_text_entered(new_text: String) -> void:

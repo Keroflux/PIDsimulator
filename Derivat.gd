@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 #	forrige_avvik = avvik
 	
 	trend = utgangsverdi
-	text = str(stepify(utgangsverdi, 0.01))
+	text = str(snapped(utgangsverdi, 0.01))
 
 
 func _on_Td_text_entered(new_text: String) -> void:

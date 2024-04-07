@@ -24,5 +24,5 @@ func _physics_process(_delta: float) -> void:
 	utgang = p + i + d
 	utgang = clamp(utgang, 0, 100)
 	trend = utgang
-	text = str(stepify(utgang, 0.01))
+	text = str(snapped(utgang, 0.01))
 

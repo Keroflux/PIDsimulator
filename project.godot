@@ -6,25 +6,30 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
+config_version=5
 
 [application]
 
 config/name="PIDsim"
 run/main_scene="res://PIDsim.tscn"
+config/features=PackedStringArray("4.2")
 config/icon="res://icon.png"
 
 [display]
 
-window/size/width=1400
-window/size/height=900
+window/size/viewport_width=1000
+window/size/viewport_height=900
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/coi_serviceworker/plugin.cfg")
 
 [input]
 
 left_mouse={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
- ]
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
 }
 
 [physics]
@@ -34,5 +39,6 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_clear_color=Color( 0.164706, 0.337255, 0.494118, 1 )
-environment/default_environment="res://default_env.tres"
+renderer/rendering_method="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.164706, 0.337255, 0.494118, 1)
+environment/defaults/default_environment="res://default_env.tres"
