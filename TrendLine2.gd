@@ -113,9 +113,9 @@ func change_time_scale(t: int) -> void:
 		data_points.pop_front()
 
 
-func set_auto_scale_y(set: bool) -> void:
-	auto_scale_y = set
-	trend_label.get_node("Config/VBoxContainer/Max").editable = !set
+func set_auto_scale_y(enable: bool) -> void:
+	auto_scale_y = enable
+	trend_label.get_node("Config/VBoxContainer/Max").editable = !enable
 	trend_label.get_node("Config/VBoxContainer/Max").text = str(max_value)
-	trend_label.get_node("Config/VBoxContainer/Min").editable = !set
+	trend_label.get_node("Config/VBoxContainer/Min").editable = !enable
 	trend_label.get_node("Config/VBoxContainer/Min").text = str(min_value)

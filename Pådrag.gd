@@ -22,7 +22,7 @@ func _physics_process(_delta: float) -> void:
 	i = integral.utgangsverdi
 	d = derivat.utgangsverdi
 	utgang = p + i + d
-	utgang = clamp(utgang, 0, 100)
+	utgang = clamp(utgang, -5, 100)
 	trend = utgang
 	text = str(snapped(utgang, 0.01))
 

@@ -20,6 +20,7 @@ var prosessverdi: Node
 var trend : float = 0.0
 var type: String = "Flow"
 var tw: Tween
+var valve_opening : float = 0.0
 
 
 func _ready() -> void:
@@ -38,6 +39,14 @@ func _physics_process(delta: float) -> void:
 	level = (innhold / volum * 100) + current_noise
 	prosessverdi.prosess_verdi = level
 	trend = inflow + flow_var
+	$TankDrawing/ArrowInn/FlowmeterInn.text = str(snapped(inflow + flow_var, 0.1))
+	$TankDrawing/ArrowOut/FlowmeterOut.text = str(snapped(outflow, 0.01))
+	$TankDrawing/ArrowOut/Valve/Opening.text = str(snapped(valve_opening, 0.01))
+	$TankDrawing/Controller/Polygon2D/ControllerLevel.text = str(snapped(level, 0.1))
+	if valve_opening > 0.1:
+		$TankDrawing/ArrowOut/Valve.modulate = Color(0.0, 1.0, 0.0, 1.0)
+	else:
+		$TankDrawing/ArrowOut/Valve.modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 
 func random_flow() -> void:

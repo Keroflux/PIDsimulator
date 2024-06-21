@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://oln18nf04ijm"]
+[gd_scene load_steps=16 format=3 uid="uid://oln18nf04ijm"]
 
 [ext_resource type="Script" path="res://Avvik.gd" id="2"]
 [ext_resource type="Script" path="res://ProsessVerdi.gd" id="3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Pådrag.gd" id="8"]
 [ext_resource type="Script" path="res://PIDsim.gd" id="9"]
 [ext_resource type="Script" path="res://Ventil.gd" id="11"]
+[ext_resource type="Script" path="res://LevelGuage.gd" id="11_wnsdd"]
 [ext_resource type="PackedScene" uid="uid://cnv2eytevp8ou" path="res://Trend.tscn" id="12"]
 
 [sub_resource type="StyleBoxFlat" id="3"]
@@ -18,11 +19,28 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0hlc"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.370364, 0.370365, 0.370364, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r60jn"]
+bg_color = Color(0, 0.8428, 3.85046e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5y4uy"]
+
 [node name="PIDsim" type="Node2D" groups=["Trend"]]
 script = ExtResource("9")
 
 [node name="Blokkdiagram" type="Node2D" parent="."]
-position = Vector2(520, 256)
+position = Vector2(464, 224)
 
 [node name="ProsessVerdi" type="Label" parent="Blokkdiagram" groups=["Trend"]]
 anchors_preset = 15
@@ -376,7 +394,156 @@ offset_bottom = 2.0
 text = "Ventilpossisjon"
 metadata/_edit_use_anchors_ = true
 
-[node name="Kp" type="LineEdit" parent="."]
+[node name="TankDrawing" type="Node2D" parent="."]
+position = Vector2(30, 49)
+
+[node name="Tank" type="Panel" parent="TankDrawing"]
+offset_left = 317.0
+offset_top = 386.0
+offset_right = 694.0
+offset_bottom = 569.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_q0hlc")
+
+[node name="LevelGuage" type="ProgressBar" parent="TankDrawing/Tank"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 26.0
+offset_right = 133.0
+offset_bottom = 165.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_r60jn")
+value = 50.0
+fill_mode = 3
+script = ExtResource("11_wnsdd")
+
+[node name="ArrowInn" type="Line2D" parent="TankDrawing"]
+position = Vector2(214, 392)
+points = PackedVector2Array(-72, 24, 128, 24, 118, 18, 118, 30, 128, 24)
+width = 5.0
+joint_mode = 2
+
+[node name="FlowmeterInn" type="Label" parent="TankDrawing/ArrowInn"]
+offset_left = -20.0
+offset_top = -54.0
+offset_right = 84.0
+offset_bottom = -31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_5y4uy")
+text = "300 m3/h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Unit" type="Label" parent="TankDrawing/ArrowInn/FlowmeterInn"]
+offset_top = 22.0
+offset_right = 104.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_5y4uy")
+text = "m3/h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="TankDrawing/ArrowInn/FlowmeterInn"]
+show_behind_parent = true
+points = PackedVector2Array(48, 44, 48, 76)
+width = 2.0
+
+[node name="ArrowOut" type="Line2D" parent="TankDrawing"]
+points = PackedVector2Array(592, 568, 592, 592, 1088, 592, 1076, 586, 1076, 598, 1088, 592)
+width = 5.0
+joint_mode = 2
+
+[node name="FlowmeterOut" type="Label" parent="TankDrawing/ArrowOut"]
+offset_left = 736.0
+offset_top = 498.0
+offset_right = 840.0
+offset_bottom = 521.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_5y4uy")
+text = "300 m3/h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Unit" type="Label" parent="TankDrawing/ArrowOut/FlowmeterOut"]
+offset_top = 22.0
+offset_right = 104.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_5y4uy")
+text = "m3/h"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="TankDrawing/ArrowOut/FlowmeterOut"]
+show_behind_parent = true
+points = PackedVector2Array(52, 44, 52, 92)
+width = 2.0
+
+[node name="Valve" type="Node2D" parent="TankDrawing/ArrowOut"]
+modulate = Color(0, 0.831373, 0, 1)
+position = Vector2(286, 466)
+
+[node name="Polygon2D" type="Polygon2D" parent="TankDrawing/ArrowOut/Valve"]
+polygon = PackedVector2Array(611, 110, 611, 142, 643, 126)
+
+[node name="Polygon2D2" type="Polygon2D" parent="TankDrawing/ArrowOut/Valve"]
+polygon = PackedVector2Array(643, 126, 675, 110, 675, 142)
+
+[node name="Polygon2D3" type="Polygon2D" parent="TankDrawing/ArrowOut/Valve"]
+polygon = PackedVector2Array(611, 88, 675, 88, 671, 82, 665, 78, 655, 74, 643, 72, 631, 74, 621, 78, 615, 82)
+
+[node name="Line2D" type="Line2D" parent="TankDrawing/ArrowOut/Valve"]
+points = PackedVector2Array(643, 88, 643, 127)
+width = 5.0
+
+[node name="Opening" type="Label" parent="TankDrawing/ArrowOut/Valve"]
+offset_left = 623.333
+offset_top = 143.333
+offset_right = 663.333
+offset_bottom = 166.333
+horizontal_alignment = 1
+
+[node name="Controller" type="Node2D" parent="TankDrawing"]
+position = Vector2(815, 427)
+
+[node name="Polygon2D" type="Polygon2D" parent="TankDrawing/Controller"]
+position = Vector2(31, -26)
+color = Color(0.650128, 0.650128, 0.650128, 1)
+polygon = PackedVector2Array(55, 22, 55, 46, 73, 64, 97, 64, 115, 46, 115, 22, 97, 4, 73, 4)
+
+[node name="ControllerLevel" type="Label" parent="TankDrawing/Controller/Polygon2D"]
+offset_left = 66.0
+offset_top = 12.0
+offset_right = 106.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "60
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControllerSP" type="Label" parent="TankDrawing/Controller/Polygon2D"]
+offset_left = 66.0
+offset_top = 30.0
+offset_right = 106.0
+offset_bottom = 53.0
+mouse_filter = 0
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+text = "60
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="TankDrawing/Controller"]
+show_behind_parent = true
+points = PackedVector2Array(-137, 4, 115, 4, 115, 112)
+width = 1.0
+
+[node name="Trend" parent="." instance=ExtResource("12")]
+position = Vector2(809, 34)
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Kp" type="LineEdit" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -391,7 +558,7 @@ theme_override_styles/normal = SubResource("3")
 text = "10"
 alignment = 1
 
-[node name="Label" type="Label" parent="Kp"]
+[node name="Label" type="Label" parent="UI/Kp"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 32.0
@@ -399,7 +566,7 @@ offset_right = 72.0
 offset_bottom = 55.0
 text = "Kp"
 
-[node name="Ti" type="LineEdit" parent="."]
+[node name="Ti" type="LineEdit" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -414,7 +581,7 @@ theme_override_styles/normal = SubResource("3")
 text = "50"
 alignment = 1
 
-[node name="Label" type="Label" parent="Ti"]
+[node name="Label" type="Label" parent="UI/Ti"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 32.0
@@ -422,7 +589,7 @@ offset_right = 56.0
 offset_bottom = 55.0
 text = "Ti"
 
-[node name="Td" type="LineEdit" parent="."]
+[node name="Td" type="LineEdit" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -437,7 +604,7 @@ theme_override_styles/normal = SubResource("3")
 text = "0"
 alignment = 1
 
-[node name="Label" type="Label" parent="Td"]
+[node name="Label" type="Label" parent="UI/Td"]
 layout_mode = 0
 offset_left = 17.5313
 offset_top = 32.0
@@ -445,7 +612,7 @@ offset_right = 49.5313
 offset_bottom = 55.0
 text = "Td"
 
-[node name="InnFlow" type="LineEdit" parent="."]
+[node name="InnFlow" type="LineEdit" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -460,14 +627,14 @@ theme_override_styles/normal = SubResource("3")
 text = "300"
 alignment = 1
 
-[node name="Label" type="Label" parent="InnFlow"]
+[node name="Label" type="Label" parent="UI/InnFlow"]
 layout_mode = 0
 offset_top = 32.0
 offset_right = 136.0
 offset_bottom = 55.0
 text = "Flow inn m3/t"
 
-[node name="FlowVariasjon" type="LineEdit" parent="."]
+[node name="FlowVariasjon" type="LineEdit" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -482,14 +649,14 @@ theme_override_styles/normal = SubResource("3")
 text = "0"
 alignment = 1
 
-[node name="Label" type="Label" parent="FlowVariasjon"]
+[node name="Label" type="Label" parent="UI/FlowVariasjon"]
 layout_mode = 0
 offset_top = 32.0
 offset_right = 171.0
 offset_bottom = 55.0
 text = "% flowvariasjon"
 
-[node name="FlowVariasjonTid" type="LineEdit" parent="."]
+[node name="FlowVariasjonTid" type="LineEdit" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -504,7 +671,7 @@ theme_override_styles/normal = SubResource("3")
 text = "60"
 alignment = 1
 
-[node name="Label" type="Label" parent="FlowVariasjonTid"]
+[node name="Label" type="Label" parent="UI/FlowVariasjonTid"]
 layout_mode = 0
 offset_top = 32.0
 offset_right = 156.0
@@ -512,7 +679,7 @@ offset_bottom = 81.0
 text = "Flowvariasjon 
 periode (sek)"
 
-[node name="TankSize" type="LineEdit" parent="."]
+[node name="TankSize" type="LineEdit" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -527,14 +694,14 @@ theme_override_styles/normal = SubResource("3")
 text = "10"
 alignment = 1
 
-[node name="Label" type="Label" parent="TankSize"]
+[node name="Label" type="Label" parent="UI/TankSize"]
 layout_mode = 0
 offset_top = 32.0
 offset_right = 144.0
 offset_bottom = 55.0
 text = "Tank m3"
 
-[node name="VentilSize" type="LineEdit" parent="."]
+[node name="VentilSize" type="LineEdit" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -548,14 +715,14 @@ theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
 theme_override_styles/normal = SubResource("3")
 text = "1200"
 
-[node name="Label" type="Label" parent="VentilSize"]
+[node name="Label" type="Label" parent="UI/VentilSize"]
 layout_mode = 0
 offset_top = 32.0
 offset_right = 144.0
 offset_bottom = 55.0
 text = "Ventil Cv m3/t"
 
-[node name="VentilHastighet" type="LineEdit" parent="."]
+[node name="VentilHastighet" type="LineEdit" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -569,14 +736,14 @@ theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
 theme_override_styles/normal = SubResource("3")
 text = "5.0"
 
-[node name="Label" type="Label" parent="VentilHastighet"]
+[node name="Label" type="Label" parent="UI/VentilHastighet"]
 layout_mode = 0
 offset_top = 32.0
 offset_right = 157.0
 offset_bottom = 55.0
 text = "Ventil hastighet %/s"
 
-[node name="VentilDødbånd" type="LineEdit" parent="."]
+[node name="VentilDødbånd" type="LineEdit" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -590,14 +757,14 @@ theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
 theme_override_styles/normal = SubResource("3")
 text = "0.2"
 
-[node name="Label" type="Label" parent="VentilDødbånd"]
+[node name="Label" type="Label" parent="UI/VentilDødbånd"]
 layout_mode = 0
 offset_top = 32.0
 offset_right = 157.0
 offset_bottom = 55.0
 text = "Ventil dødbånd %"
 
-[node name="Målestøy" type="LineEdit" parent="."]
+[node name="Målestøy" type="LineEdit" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -612,14 +779,14 @@ theme_override_styles/normal = SubResource("3")
 text = "0.0"
 alignment = 1
 
-[node name="Label" type="Label" parent="Målestøy"]
+[node name="Label" type="Label" parent="UI/Målestøy"]
 layout_mode = 0
 offset_top = 32.0
 offset_right = 144.0
 offset_bottom = 55.0
 text = "Målestøy %"
 
-[node name="MålestøyHZ" type="LineEdit" parent="."]
+[node name="MålestøyHZ" type="LineEdit" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -634,17 +801,14 @@ theme_override_styles/normal = SubResource("3")
 text = "10"
 alignment = 1
 
-[node name="Label" type="Label" parent="MålestøyHZ"]
+[node name="Label" type="Label" parent="UI/MålestøyHZ"]
 layout_mode = 0
 offset_top = 32.0
 offset_right = 144.0
 offset_bottom = 55.0
 text = "Målestøy Hz"
 
-[node name="Trend" parent="." instance=ExtResource("12")]
-position = Vector2(168, 392)
-
-[node name="NyTrend" type="Button" parent="."]
+[node name="NyTrend" type="Button" parent="UI"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -656,18 +820,18 @@ grow_vertical = 0
 text = "Nytt trendvindu"
 
 [connection signal="text_submitted" from="Blokkdiagram/Setpunkt" to="Blokkdiagram/Setpunkt" method="_on_Setpunkt_text_entered"]
-[connection signal="text_submitted" from="Kp" to="Blokkdiagram/Proporsjonal" method="_on_Kp_text_entered"]
-[connection signal="text_submitted" from="Kp" to="Blokkdiagram/Integral" method="_on_Kp_text_entered"]
-[connection signal="text_submitted" from="Kp" to="Blokkdiagram/Derivat" method="_on_Kp_text_entered"]
-[connection signal="text_submitted" from="Ti" to="Blokkdiagram/Integral" method="_on_Ti_text_entered"]
-[connection signal="text_submitted" from="Td" to="Blokkdiagram/Derivat" method="_on_Td_text_entered"]
-[connection signal="text_submitted" from="InnFlow" to="." method="_on_InnFlow_text_entered"]
-[connection signal="text_submitted" from="FlowVariasjon" to="." method="_on_FlowVariasjon_text_entered"]
-[connection signal="text_submitted" from="FlowVariasjonTid" to="." method="_on_FlowVariasjonTid_text_entered"]
-[connection signal="text_submitted" from="TankSize" to="." method="_on_TankSize_text_entered"]
-[connection signal="text_submitted" from="VentilSize" to="Blokkdiagram/Ventil" method="_on_VentilSize_text_entered"]
-[connection signal="text_submitted" from="VentilHastighet" to="Blokkdiagram/Ventil" method="_on_VentilHastighet_text_entered"]
-[connection signal="text_submitted" from="VentilDødbånd" to="Blokkdiagram/Ventil" method="_on_VentilDdbnd_text_entered"]
-[connection signal="text_submitted" from="Målestøy" to="." method="_on_Mlesty_text_entered"]
-[connection signal="text_submitted" from="MålestøyHZ" to="." method="_on_MlestyHZ_text_entered"]
-[connection signal="pressed" from="NyTrend" to="." method="_on_NyTrend_pressed"]
+[connection signal="text_submitted" from="UI/Kp" to="Blokkdiagram/Proporsjonal" method="_on_Kp_text_entered"]
+[connection signal="text_submitted" from="UI/Kp" to="Blokkdiagram/Integral" method="_on_Kp_text_entered"]
+[connection signal="text_submitted" from="UI/Kp" to="Blokkdiagram/Derivat" method="_on_Kp_text_entered"]
+[connection signal="text_submitted" from="UI/Ti" to="Blokkdiagram/Integral" method="_on_Ti_text_entered"]
+[connection signal="text_submitted" from="UI/Td" to="Blokkdiagram/Derivat" method="_on_Td_text_entered"]
+[connection signal="text_submitted" from="UI/InnFlow" to="." method="_on_InnFlow_text_entered"]
+[connection signal="text_submitted" from="UI/FlowVariasjon" to="." method="_on_FlowVariasjon_text_entered"]
+[connection signal="text_submitted" from="UI/FlowVariasjonTid" to="." method="_on_FlowVariasjonTid_text_entered"]
+[connection signal="text_submitted" from="UI/TankSize" to="." method="_on_TankSize_text_entered"]
+[connection signal="text_submitted" from="UI/VentilSize" to="Blokkdiagram/Ventil" method="_on_VentilSize_text_entered"]
+[connection signal="text_submitted" from="UI/VentilHastighet" to="Blokkdiagram/Ventil" method="_on_VentilHastighet_text_entered"]
+[connection signal="text_submitted" from="UI/VentilDødbånd" to="Blokkdiagram/Ventil" method="_on_VentilDdbnd_text_entered"]
+[connection signal="text_submitted" from="UI/Målestøy" to="." method="_on_Mlesty_text_entered"]
+[connection signal="text_submitted" from="UI/MålestøyHZ" to="." method="_on_MlestyHZ_text_entered"]
+[connection signal="pressed" from="UI/NyTrend" to="." method="_on_NyTrend_pressed"]

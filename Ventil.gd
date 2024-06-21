@@ -25,8 +25,10 @@ func _physics_process(delta: float) -> void:
 		elif ventilpossisjon - deadband > regulator.utgang:
 			ventilpossisjon -= delta * ventilhastighet
 	
-	flow = cv * (ventilpossisjon / 100)
+	ventilpossisjon = clamp(ventilpossisjon, 0, 100)
+	flow = cv * (ventilpossisjon / 100.0)
 	separator.outflow = flow
+	separator.valve_opening = ventilpossisjon
 	
 	trend = ventilpossisjon
 	text = str(snapped(ventilpossisjon, 0.01))
