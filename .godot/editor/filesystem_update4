@@ -1,9 +1,4 @@
 res://default_env.tres
 res://PIDsim.tscn
 res://Trend.tscn
-res://TrendLine2.gd
-res://LevelGuage.gd
-res://PIDsim.gd
-res://Ventil.gd
 res://Setpunkt.gd
-res://Pådrag.gd

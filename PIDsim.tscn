@@ -163,7 +163,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
 theme_override_styles/normal = SubResource("3")
-text = "65"
+text = "50"
 alignment = 1
 script = ExtResource("4")
 metadata/_edit_use_anchors_ = true
@@ -433,6 +433,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Unit" type="Label" parent="TankDrawing/ArrowInn/FlowmeterInn"]
+layout_mode = 0
 offset_top = 22.0
 offset_right = 104.0
 offset_bottom = 45.0
@@ -464,6 +465,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Unit" type="Label" parent="TankDrawing/ArrowOut/FlowmeterOut"]
+layout_mode = 0
 offset_top = 22.0
 offset_right = 104.0
 offset_bottom = 45.0
