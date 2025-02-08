@@ -27,6 +27,7 @@ func _ready() -> void:
 	randomize()
 	prosessverdi = get_node("Blokkdiagram/ProsessVerdi")
 	random_flow()
+	innhold = volum * 0.4
 	#tw = get_tree().create_tween()
 
 

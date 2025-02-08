@@ -6,14 +6,15 @@ var Td: float = 0.0
 var Kp: float = 10
 var avvik: float = 0.0
 var forrige_avvik: float = 0.0
+var forrige_prosessverdi: float = 0.0
 var trend: float = 0.0
 var prosessverdi: float = 0.0
 
 
 func _physics_process(delta: float) -> void:
-	utgangsverdi = ((prosessverdi - forrige_avvik) / delta) * Td * Kp
+	utgangsverdi = ((prosessverdi - forrige_prosessverdi) / delta) * Td * Kp
 #	utgangsverdi = ((avvik - forrige_avvik) / delta) * Td * Kp
-	forrige_avvik = prosessverdi
+	forrige_prosessverdi = prosessverdi
 #	forrige_avvik = avvik
 	
 	trend = utgangsverdi
@@ -25,4 +26,8 @@ func _on_Td_text_entered(new_text: String) -> void:
 
 
 func _on_Kp_text_entered(new_text: String) -> void:
-	Kp = float(new_text)
+	if float(new_text) > 0:
+		Kp = float(new_text)
+	else:
+		Kp = 1
+	

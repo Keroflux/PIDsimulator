@@ -16,9 +16,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if Ti > 0:
-		if ventil.utgang < 99.9 and ventil.utgang > 0.1:
-			utgangsverdi = (utgangsverdi + (avvik * delta * (Kp/Ti)))
-			utgangsverdi = clamp(utgangsverdi, 0, 100)
+		utgangsverdi = utgangsverdi + ((avvik/Ti) * delta * Kp)
+		utgangsverdi = clamp(utgangsverdi, 0, 100)
 	
 	trend = utgangsverdi
 	text = str(snapped(utgangsverdi, 0.01))
@@ -29,4 +28,7 @@ func _on_Ti_text_entered(new_text: String) -> void:
 
 
 func _on_Kp_text_entered(new_text: String) -> void:
-	Kp = float(new_text)
+	if float(new_text) > 0:
+		Kp = float(new_text)
+	else:
+		Kp = 1

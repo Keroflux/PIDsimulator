@@ -1,4 +1,7 @@
 res://default_env.tres
 res://PIDsim.tscn
-res://Pådrag.gd
+res://Integral.gd
 res://Trend.tscn
+res://Avvik.gd
+res://Derivat.gd
+res://PIDsim.gd

@@ -16,7 +16,7 @@ func _ready():
 
 
 func _physics_process(_delta: float) -> void:
-	avvik = prosess_verdi - setpunkt
+	avvik = (setpunkt - prosess_verdi) * -1
 	trend = avvik
 	p.avvik = avvik
 	i.avvik = avvik
