@@ -11,6 +11,7 @@ func _physics_process(_delta: float) -> void:
 	utgangsverdi = avvik * Kp
 	trend = utgangsverdi
 	text = str(snapped(utgangsverdi, 0.01))
+	$Label2.text = str(snapped(avvik, 0.01), " * ", Kp)
 
 
 func _on_Kp_text_entered(new_text: String) -> void:

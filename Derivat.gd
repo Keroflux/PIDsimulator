@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
 	
 	trend = utgangsverdi
 	text = str(snapped(utgangsverdi, 0.01))
+	$Label2.text = str("((", snapped(prosessverdi, 0.01), " - ", snapped(forrige_prosessverdi, 0.01), ") / ", snapped(delta, 0.01), ") * ", Td, " * ", Kp)
 
 
 func _on_Td_text_entered(new_text: String) -> void:

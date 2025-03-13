@@ -232,6 +232,21 @@ text = "P
 "
 metadata/_edit_use_anchors_ = true
 
+[node name="Label2" type="Label" parent="Blokkdiagram/Proporsjonal"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -5.32715
+anchor_top = 18.6244
+anchor_right = -0.983398
+anchor_bottom = 18.6244
+offset_left = 8.9375
+offset_top = -44.7333
+offset_right = 30.9375
+offset_bottom = 4.26667
+text = "P
+"
+metadata/_edit_use_anchors_ = true
+
 [node name="Integral" type="Label" parent="Blokkdiagram" groups=["Trend"]]
 anchors_preset = 15
 anchor_right = 1.0
@@ -263,6 +278,20 @@ anchor_right = 0.40625
 offset_top = -24.0
 offset_right = 20.0
 offset_bottom = -1.0
+text = "I"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Blokkdiagram/Integral"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -5.2832
+anchor_top = 16.8
+anchor_right = -2.48633
+anchor_bottom = 16.8
+offset_left = 8.125
+offset_top = -48.0
+offset_right = 28.125
+offset_bottom = -25.0
 text = "I"
 metadata/_edit_use_anchors_ = true
 
@@ -302,6 +331,19 @@ anchor_left = 0.40625
 anchor_top = 0.0666667
 anchor_right = 0.40625
 anchor_bottom = 0.0666667
+offset_top = -24.0
+offset_right = 19.0
+offset_bottom = -1.0
+text = "D"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Blokkdiagram/Derivat"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -5.125
+anchor_top = 14.0667
+anchor_right = -1.60938
+anchor_bottom = 14.0667
 offset_top = -24.0
 offset_right = 19.0
 offset_bottom = -1.0

@@ -4,3 +4,8 @@ res://TrendLabel.tscn
 res://TrendLine2.tscn
 res://TrendListBox.tscn
 res://default_env.tres
+res://LevelGuage.gd
+res://Integral.gd
+res://PIDsim.gd
+res://Proporsjonal.gd
+res://Derivat.gd
