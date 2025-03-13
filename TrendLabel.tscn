@@ -1,17 +1,25 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://ckhrw47j13tmk"]
 
-[ext_resource path="res://Roboto-Regular.ttf" type="FontFile" id=1]
-[ext_resource path="res://TrendLabel.gd" type="Script" id=2]
+[ext_resource type="FontFile" uid="uid://dqv7wo45g4knb" path="res://Roboto-Regular.ttf" id="1"]
+[ext_resource type="Script" uid="uid://cq0bgwfna7wos" path="res://TrendLabel.gd" id="2"]
 
-[sub_resource type="FontFile" id=5]
-font_data = ExtResource( 1 )
+[sub_resource type="FontFile" id="5"]
+fallbacks = Array[Font]([ExtResource("1"), ExtResource("1")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
 [node name="PanelContainer" type="Button"]
 offset_right = 150.0
 offset_bottom = 35.0
-custom_minimum_size = Vector2( 150, 35 )
+custom_minimum_size = Vector2(150, 35)
 size_flags_horizontal = 0
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 offset_left = 6.0
@@ -23,7 +31,7 @@ theme_override_constants/separation = 10
 [node name="ColorPickerButton" type="ColorPickerButton" parent="HBoxContainer"]
 offset_right = 30.0
 offset_bottom = 25.0
-custom_minimum_size = Vector2( 30, 25 )
+custom_minimum_size = Vector2(30, 25)
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
@@ -31,10 +39,10 @@ size_flags_vertical = 0
 offset_left = 40.0
 offset_right = 72.0
 offset_bottom = 30.0
-custom_minimum_size = Vector2( 0, 20 )
+custom_minimum_size = Vector2(0, 20)
 size_flags_horizontal = 0
 size_flags_vertical = 1
-theme_override_fonts/font = SubResource( 5 )
+theme_override_fonts/font = SubResource("5")
 text = "Nivå"
 valign = 1
 
@@ -42,10 +50,10 @@ valign = 1
 offset_left = 82.0
 offset_right = 98.0
 offset_bottom = 30.0
-custom_minimum_size = Vector2( 0, 20 )
+custom_minimum_size = Vector2(0, 20)
 size_flags_horizontal = 0
 size_flags_vertical = 1
-theme_override_fonts/font = SubResource( 5 )
+theme_override_fonts/font = SubResource("5")
 text = "??"
 valign = 1
 

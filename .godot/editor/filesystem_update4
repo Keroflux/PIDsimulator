@@ -1,7 +1,6 @@
-res://default_env.tres
 res://PIDsim.tscn
-res://Integral.gd
 res://Trend.tscn
-res://Avvik.gd
-res://Derivat.gd
-res://PIDsim.gd
+res://TrendLabel.tscn
+res://TrendLine2.tscn
+res://TrendListBox.tscn
+res://default_env.tres

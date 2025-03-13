@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cnv2eytevp8ou"]
 
-[ext_resource type="Script" path="res://TrendListBox.gd" id="1"]
-[ext_resource type="Script" path="res://Trend.gd" id="2"]
+[ext_resource type="Script" uid="uid://y72rm4rrab87" path="res://TrendListBox.gd" id="1"]
+[ext_resource type="Script" uid="uid://drb30ckihyyu2" path="res://Trend.gd" id="2"]
 
 [sub_resource type="StyleBoxFlat" id="1"]
 bg_color = Color(0.309804, 0.309804, 0.309804, 1)
@@ -97,6 +97,7 @@ layout_mode = 2
 selected = 0
 item_count = 3
 popup/item_0/text = "1 min"
+popup/item_0/id = 0
 popup/item_1/text = "5 min"
 popup/item_1/id = 1
 popup/item_2/text = "15 min"
