@@ -26,6 +26,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_Ti_text_entered(new_text: String) -> void:
 	Ti = float(new_text)
+	if float(new_text) <= 0:
+		utgangsverdi = 0
 
 
 func _on_Kp_text_entered(new_text: String) -> void:

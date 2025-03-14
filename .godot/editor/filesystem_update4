@@ -1,11 +1,5 @@
-res://PIDsim.tscn
-res://Trend.tscn
-res://TrendLabel.tscn
-res://TrendLine2.tscn
-res://TrendListBox.tscn
 res://default_env.tres
-res://LevelGuage.gd
-res://Integral.gd
+res://PIDsim.tscn
 res://PIDsim.gd
-res://Proporsjonal.gd
-res://Derivat.gd
+res://Trend.tscn
+res://Integral.gd

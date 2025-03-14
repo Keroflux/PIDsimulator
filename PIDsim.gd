@@ -1,7 +1,7 @@
 extends Node2D
 
 var inflow: float = 300.0
-var volum: float = 10.0
+var volum: float = 1.0
 var innhold: float = 0.0
 var outflow: float = 0.0
 var level: float = 0.0
@@ -37,6 +37,7 @@ func _physics_process(delta: float) -> void:
 		current_noise = randf_range(level_noise, -level_noise)
 	
 	innhold += (inflow + flow_var - outflow ) * delta / 3600
+	innhold = clamp(innhold, 0, volum)
 	level = (innhold / volum * 100) + current_noise
 	prosessverdi.prosess_verdi = level
 	trend = inflow + flow_var
