@@ -3,7 +3,7 @@ extends Label
 var type: String = "D"
 var utgangsverdi: float = 0.0
 var Td: float = 0.0
-var Kp: float = 10
+var Kp: float = 1
 var avvik: float = 0.0
 var forrige_avvik: float = 0.0
 var forrige_prosessverdi: float = 0.0

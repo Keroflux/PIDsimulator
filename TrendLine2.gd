@@ -30,7 +30,7 @@ func _ready() -> void:
 
 
 func _draw() -> void:
-	draw_polyline(trend, color, 1.0)
+	draw_polyline(trend, color, 2.0)
 
 
 func _on_Timer_timeout() -> void:

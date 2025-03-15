@@ -2,7 +2,7 @@ extends Label
 
 var type: String = "P"
 var utgangsverdi: float = 0.0
-var Kp: float = 10.0
+var Kp: float = 1.0
 var avvik: float = 0.0
 var trend: float = 0.0
 
