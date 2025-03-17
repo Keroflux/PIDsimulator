@@ -734,7 +734,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0.513726, 1, 1)
 theme_override_styles/normal = SubResource("3")
-text = "10"
+text = "1"
 alignment = 1
 
 [node name="Label" type="Label" parent="UI/TankSize"]

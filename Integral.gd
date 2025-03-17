@@ -17,7 +17,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Ti > 0:
 		utgangsverdi = utgangsverdi + ((avvik/Ti) * delta * Kp)
-		utgangsverdi = clamp(utgangsverdi, 0, 100)
+		utgangsverdi = clamp(utgangsverdi, 0, 100) # Anti I windup
 	
 	trend = utgangsverdi
 	text = str(snapped(utgangsverdi, 0.01))
